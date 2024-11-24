@@ -1,1 +1,138 @@
 /* Ini Style Css */
+
+.navbar {
+  background-color: #001f3f;
+}
+
+.navbar-brand img {
+  border-radius: 3px;
+}
+
+.navbar-nav .nav-link {
+  color: #fff;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #D62C2C;
+}
+
+.navbar-nav .nav-link.active {
+  color: #D62C2C;
+  font-weight: bold;
+}
+
+.btn-signup {
+  background-color: #D62C2C;
+  border-color: #D62C2C;;
+  color: white;
+}
+
+.btn-signup:hover {
+  background-color: white;
+  border-color: white;
+  color: #001f3f;
+}
+
+/* Custom Toggler Button */
+.navbar-toggler {
+  border-color: #fff; /* White border */
+}
+
+.navbar-toggler-icon {
+  background-color: #fff; /* White color for the toggler icon */
+  
+}
+
+.custom-list-group {
+  border: none; /* Hilangkan border keseluruhan */
+  border-radius: 0; /* Hilangkan tepi melengkung */
+  overflow: hidden; /* Tetap menghilangkan overflow */
+}
+
+.custom-list-group .list-group-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff; /* Pastikan latar belakang tetap putih */
+  transition: background-color 0.3s ease; /* Animasi saat hover */
+}
+
+.custom-list-group .list-group-item + .list-group-item {
+  margin-top: 8px; /* Jarak antar item */
+}
+
+.custom-list-group .list-group-item:hover {
+  background-color: #f8f9fa; /* Warna latar saat hover */
+}
+
+.custom-list-group .icon {
+  margin-right: 10px;
+  color: #D62C2C;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.row > .col {
+  margin-bottom: 1rem; /* Jarak antar card */
+}
+
+.card {
+  border: none; /* Hilangkan border default */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-10px); /* Efek hover mengangkat card */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.card-header {
+  background-color: #001f3f; /* Warna biru untuk header */
+  color: white; /* Teks putih di header */
+  font-weight: bold;
+  border-radius: 0.5rem 0.5rem 0 0; /* Round corners atas */
+}
+.card-body {
+  background-color: white; /* Warna latar belakang putih */
+}
+.pricing-card-title {
+  color: #D62C2C; /* Warna biru untuk harga */
+  font-weight: bold;
+}
+ul {
+  text-align: left; /* Rata kiri untuk daftar */
+  padding: 0;
+}
+ul li {
+  margin-bottom: 0.5rem; /* Spasi antar item daftar */
+}
+  
+.text-center-container {
+  display: flex;
+  justify-content: center; /* Pusatkan secara horizontal */
+  align-items: center; /* Opsional: Pusatkan secara vertikal */
+}
+
+.underline-title {
+  position: relative;
+  display: inline-block ; /* Agar ukurannya menyesuaikan dengan teks */
+  margin-bottom: 20px; /* Opsional: Sesuaikan jarak antara teks dan garis */
+  text-align: center;
+}
+
+.underline-title::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px; /* Ketebalan garis */
+  background-color: #D62C2C; /* Warna garis */
+  margin-top: 5px; /* Jarak garis dari teks */
+}
