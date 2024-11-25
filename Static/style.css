@@ -1,1 +1,141 @@
 /* Ini Style Css */
+.navbar {
+    background-color: #001f3f;
+}
+
+.navbar-brand img {
+    border-radius: 3px;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #D62C2C;
+}
+
+.navbar-nav .nav-link.active {
+    color: #D62C2C;
+    font-weight: bold;
+}
+
+.btn-signup {
+    background-color: #D62C2C;
+    border-color: #D62C2C;;
+    color: white;
+}
+
+.btn-signup:hover {
+    background-color: white;
+    border-color: white;
+    color: #001f3f;
+}
+
+.iframe-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.iframe-container iframe {
+    max-width: 100%; /* Responsif pada perangkat kecil */
+}
+
+/* KONTAK */
+
+.contact-section {
+    background-color: #001f3f;
+    color: white;
+    padding: 50px 20px;
+  }
+  .contact-section .form-floating input,
+  .contact-section .form-floating textarea {
+    background-color: white;
+    color: black;
+}
+.contact-section .form-floating label {
+    color: #333;
+}
+.contact-section .contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.contact-section .contact-info div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.contact-section .contact-info div img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+.contact-section button {
+    background-color: #D62C2C;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.contact-section button:hover {
+    background-color: #7a0000;
+}
+
+
+.icon {
+    width: 50px; /* Atur ukuran ikon jika perlu */
+    height: 50px;
+}
+
+.contact-item a {
+    color: white; /* Ubah warna teks menjadi putih */
+    font-size: 1.5rem; /* Perbesar ukuran teks */
+    font-weight: 500; /* Tambahkan ketebalan teks jika diperlukan */
+    text-decoration: none; /* Hapus garis bawah dari teks */
+}
+
+.contact-item a:hover {
+    color: #4cf3ff; /* Warna teks saat hover */
+}
+
+
+/* LOGIN */
+form{
+    width: 24%;
+    background-color: white;
+    padding: 50px;
+    border-radius: 20px;
+    margin-top: 150px;
+ }
+
+.form-control{
+    color: black;
+    border-bottom-color:black ;
+    box-shadow: none !important;
+    border: none;
+    border-bottom: 1px solid;
+    border-radius: 0px;
+}
+
+.input-group-text {
+    background-color: transparent !important; /* Hilangkan latar belakang */
+    border: none !important; /* Hilangkan border */
+    padding: 0 !important; /* Kurangi padding bawaan */
+}
+
+.gradient-background {
+    background: linear-gradient(
+      to right, /* Mengatur gradien horizontal */
+      rgb(16, 0, 0), /* Warna pertama */
+      rgba(2, 1, 106, 1), /* Warna kedua */
+      rgba(0, 4, 255, 1) /* Warna ketiga */
+    );
+  }
+  
+  @media only screen and (max-width:600px){
+    form{
+        width: 100% !important;
+    }
+  }

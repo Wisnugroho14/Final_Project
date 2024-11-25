@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="gradient-background">
+        <div class="container-fluid">
+            <form class="mx-auto">
+                <h4 class="text-center">Masuk Akun</h4>
+
+
+                <!-- Input Username -->
+                <div class="form-floating mb-4 mt-4">
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fas fa-user me-2"></i> <!-- Icon username -->
+                    </span>
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Masukkan Username" required>
+                </div>
+                </div>
+                
+                <!-- Input Email -->
+                <div class="form-floating mb-4 mt-4">
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-envelope me-2"></i> <!-- Icon email -->
+                    </span>
+                    <input type="email" class="form-control" id="floatingInputEmail" placeholder="Masukkan Email" required>
+                </div>
+                </div>
+
+            <!-- Make Password -->
+                <div class="form-floating mb-4 ">
+                    <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fas fa-lock me-2"></i> <!-- Icon password -->
+                    </span>
+                    <input type="password" class="form-control me-2" id="makePassword" placeholder="Password" required>
+                    </span>
+                </div>
+                </div>
+            
+                <!-- Input Password -->
+                <div class="form-floating mb-4 ">
+                    <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fas fa-lock me-2"></i> <!-- Icon password -->
+                    </span>
+                    <input type="password" class="form-control me-2" id="InputPassword" placeholder="Password" required>
+                    <span class="input-group-text toggle-password" onclick="togglePasswordVisibility()">
+                        <i id="eyeIcon" class="fas fa-eye" style="cursor: pointer;"></i> <!-- Icon mata -->
+                    </span>
+                </div>
+                </div>
+                
+                    <!-- Baris baru untuk 'Ingat saya' dan 'Lupa password' -->
+                    <div class="d-flex justify-content-between align-items-center mt-2 mb-3">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Terima syarat dan ketentuan</label>
+                    </div>
+                    </div>
+                
+                
+                
+                <button type="submit" href="#" class="btn btn-primary mt-3 mb-3" style="width: 100%; border: none; border-radius: 10px;">Masuk</button>
+                <div class="text-center mt-3">
+                    <span>Sudah punya akun? <a href="/login" class="text-decoration-none">Masuk sekarang</a></span>
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+
+    <script>
+      function togglePasswordVisibility() {
+          const passwordInput = document.getElementById('InputPassword');
+          const passwordIcon = document.getElementById('eyeIcon');
+          
+          if (passwordInput.type === 'password') {
+              passwordInput.type = 'text';
+              passwordIcon.classList.remove('fa-eye'); 
+              passwordIcon.classList.add('fa-eye-slash');
+          } else {
+              passwordInput.type = 'password';
+              passwordIcon.classList.remove('fa-eye-slash'); 
+              passwordIcon.classList.add('fa-eye');
+          }
+      }
+  </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
