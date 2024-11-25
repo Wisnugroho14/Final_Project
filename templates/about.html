@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg py-2">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="{{ url_for('static', filename='logo_bbc.png') }}" alt="Logo" width="75">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Beranda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Tentang Kami</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Program
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">English for Children</a></li>
+                                <li><a class="dropdown-item" href="#">English for Teens</a></li>
+                                <li><a class="dropdown-item" href="#">English for Adult</a></li>
+                                <li><a class="dropdown-item" href="#">English Private Class</a></li>
+                                <li><a class="dropdown-item" href="#">TOEFL/TOEIC Preparation</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Kontak</a>
+                        </li>
+                    </ul>
+                    <button class="btn btn-outline-light me-2">Masuk</button>
+                    <button class="btn btn-signup">Daftar</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section text-center">
+            <div class="container hero-content">
+                <h1>Build Better Communication</h1>
+                <p>Belajar Bahasa Inggris Jadi Lebih Mudah!</p>
+                <div class="mt-4">
+                    <a href="#" class="btn btn-daftar">Daftar Sekarang</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-container py-5">
+            <div class="container">
+                <div class="row align-items-center mb-5">
+                    <div class="col-md-6 text-white">
+                        <h2 class="mb-4">Tentang BBC</h2>
+                        <p class="lead">BBC English Training Specialist adalah lembaga pendidikan bahasa Inggris yang
+                            didirikan pada Juni 1980. Lembaga ini dilengkapi dengan fasilitas modern, kurikulum
+                            terstruktur, serta manajemen yang terkontrol dengan baik, memiliki siswa ± 15.000 orang dari
+                            berbagai kalangan.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{ url_for('static', filename='profil_bbc.jpeg') }}" alt="Profil BBC"
+                            class="img-fluid rounded shadow-lg">
+                    </div>
+                </div>
+
+                <div class="row text-white mb-5">
+                    <div class="col-md-6 text-center mb-4">
+                        <div class="vision-card shadow p-4 rounded">
+                            <i class="bi bi-eye-fill display-4 mb-3 text-danger"></i>
+                            <h3 class="mb-3">Visi</h3>
+                            <p>Menjadi Lembaga Pendidikan dan Pelatihan Terpercaya yang Menghasilkan Lulusan Berkarakter
+                                dan Berkompetensi Unggul.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <div class="mission-card shadow p-4 rounded">
+                            <i class="bi bi-bullseye display-4 mb-3 text-danger"></i>
+                            <h3 class="mb-3">Misi</h3>
+                            <p>Menyelenggarakan Program Pendidikan dan Pelatihan Berkualitas untuk Menghasilkan Lulusan
+                                Berkarakter dan Berkompetensi Unggul.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prestasi-section">
+                    <h2 class="text-center text-white mb-4">Prestasi Kami</h2>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <h5>Kurikulum Kompetensi</h5>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <p>Kurikulum Berbasis Kompetensi baik Nasional maupun internasional.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <h5>Akreditasi Nasional</h5>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <p>Terakreditasi Badan Akreditasi Nasional Pendidikan Non-Formal.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <h5>Manajemen Mutu</h5>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <p>Menerapkan Sistem Manajemen Mutu ISO 9001:2008.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <h5>Tenaga Pendidik Berprestasi</h5>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <p>Memiliki Tenaga Pendidik seperti Juara 1 Micro Teaching Bahasa Inggris.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <h5>Lembaga Teladan</h5>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <p>Meraih Predikat Lembaga Kursus Bahasa Inggris Teladan Tingkat Nasional.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <h5>Penghargaan Manajemen</h5>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <p>Meraih Penghargaan Widya Karya Bakti 2010, dan lainnya.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <h5>Siswa Berprestasi</h5>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <p>Siswa Kami Berprestasi di tingkat Nasional dan Asia Pacific.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <h5>Juara 1 LKP Non-Vokasional</h5>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <p>Meraih Juara 1 LKP Non-Vokasional Standar Nasional/Internasional 2013.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <h5>Penilaian Kinerja</h5>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <p>Meraih Predikat A atau B untuk Penilaian Kinerja Cabang-cabang BBC ETS.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="grade-section">
+            <div class="container">
+                <h2 class="mb-5 text-center">Nilai-Nilai Utama Kami</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="grade-card">
+                            <h5>Profesialisme</h5>
+                            <p>Sikap jujur, disiplin, dan bertanggung jawab. Bekerja sesuai dengan kualifikasi dan
+                                kompetensi.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="grade-card">
+                            <h5>Sukses Pelanggan</h5>
+                            <p>Bekerja memprioritaskan pada kepuasan dan kesuksesan pelanggan. Bekerja dengan
+                                berorientasi pada pelayanan prima.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="grade-card">
+                            <h5>Budaya Berprestasi</h5>
+                            <p>Bekerja berorientasi pada hasil, dengan tetap menjaga integritas dan profesionalisme.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="grade-card">
+                            <h5>Budaya Pembelajar</h5>
+                            <p>Selalu mengembangkan diri dan lingkungannya. Tanggap terhadap setiap perubahan.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="grade-card">
+                            <h5>Kreatifitas dan Inovasi</h5>
+                            <p>Mengembangkan alternatif solusi terhadap masalah. Menemukan hal-hal baru yang lebih
+                                produktif dalam bekerja.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="grade-card">
+                            <h5>Kerjasama Tim</h5>
+                            <p>Bersinergi dan berkolaborasi dalam mencapai tujuan. Berkomitmen dan dapat diandalkan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="teach-section">
+            <div class="text-center">
+                <h2 class="mb-5">Tenaga Pengajar</h2>
+                <div class="container mt-4">
+                    <div class="row justify-content-center">
+                        <div class="col-6 col-md-3 text-center">
+                            <img src="{{ url_for('static', filename='image-1.png') }}" alt="Pengajar 1"
+                                class="circle-image">
+                            <p class="mt-2">Lorem Ipsum</p>
+                        </div>
+                        <div class="col-6 col-md-3 text-center">
+                            <img src="{{ url_for('static', filename='image-1.png') }}" alt="Pengajar 2"
+                                class="circle-image">
+                            <p class="mt-2">Lorem Ipsum</p>
+                        </div>
+                        <div class="col-6 col-md-3 text-center">
+                            <img src="{{ url_for('static', filename='image-1.png') }}" alt="Pengajar 3"
+                                class="circle-image">
+                            <p class="mt-2">Lorem Ipsum</p>
+                        </div>
+                        <div class="col-6 col-md-3 text-center">
+                            <img src="{{ url_for('static', filename='image-1.png') }}" alt="Pengajar 4"
+                                class="circle-image">
+                            <p class="mt-2">Lorem Ipsum</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-danger text-white text-center py-3">
+        <p>Copyright &copy; 2024 Kursus Bahasa Inggris | Powered by Kursus Bahasa Inggris</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
