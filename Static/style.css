@@ -1,5 +1,6 @@
 /* Ini Style Css */
 
+/* Navbar */
 .navbar {
   background-color: #001f3f;
 }
@@ -34,15 +35,39 @@
 }
 
 /* Custom Toggler Button */
-.navbar-toggler {
-  border-color: #fff; /* White border */
+.custom-toggler {
+  border: none; /* Menghapus border */
+  padding: 0.5rem;
+  border-radius: 5px;
 }
 
-.navbar-toggler-icon {
-  background-color: #fff; /* White color for the toggler icon */
-  
+/* Mengubah warna ikon toggler */
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
+/* Tambahkan efek hover jika diinginkan */
+.custom-toggler:hover {
+  background-color: #0056b3; /* Warna biru lebih gelap */
+}
+
+/* End Navbar */
+
+/* Carousel card */
+.carousel-inner img {
+  max-height: 500px; /* Atur tinggi maksimum */
+  height: auto;
+  object-fit: cover; /* Menyesuaikan gambar tanpa mengubah proporsi */
+}
+
+.carousel {
+  width: 100%; /* Lebar penuh sesuai layar */
+  margin: 0 auto; /* Agar tetap di tengah */
+}
+
+
+
+/* Keunggulan BBC */
 .custom-list-group {
   border: none; /* Hilangkan border keseluruhan */
   border-radius: 0; /* Hilangkan tepi melengkung */
@@ -73,7 +98,9 @@
   font-size: 18px;
   font-weight: bold;
 }
+/* End */
 
+/* Harga Program */
 .card {
   display: flex;
   flex-direction: column;
@@ -115,6 +142,10 @@ ul li {
   margin-bottom: 0.5rem; /* Spasi antar item daftar */
 }
   
+.center-card {
+  margin: 0 auto; /* Menambahkan margin otomatis untuk menempatkan card di tengah */
+}
+
 .text-center-container {
   display: flex;
   justify-content: center; /* Pusatkan secara horizontal */
@@ -135,4 +166,48 @@ ul li {
   height: 2px; /* Ketebalan garis */
   background-color: #D62C2C; /* Warna garis */
   margin-top: 5px; /* Jarak garis dari teks */
+}
+/* End */
+
+/* Accordion Styling */
+.custom-accordion .accordion-item {
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-accordion .accordion-header {
+  background-color: #007bff; /* Warna biru */
+  color: white;
+}
+
+.custom-accordion .accordion-button {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+.custom-accordion .accordion-button:hover {
+  background-color: #0056b3; /* Biru gelap */
+}
+
+.custom-accordion .accordion-button:not(.collapsed) {
+  color: #fff;
+  background-color: #0056b3;
+}
+
+.custom-accordion .accordion-body {
+  background-color: #f8f9fa;
+  color: #343a40;
+  font-size: 0.95rem;
+  padding: 1rem;
+}
+
+/* Transition Effects */
+.accordion-button,
+.accordion-collapse {
+  transition: all 0.3s ease;
 }
