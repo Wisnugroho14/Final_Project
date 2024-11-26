@@ -19,6 +19,20 @@
     font-weight: bold;
 }
 
+.custom-toggler {
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.custom-toggler:hover {
+    background-color: #D62C2C;
+}
+
 .btn-signup {
     background-color: #D62C2C;
     border-color: #D62C2C;
@@ -42,7 +56,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #333; 
+    color: #333;
     padding: 50px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -50,13 +64,13 @@
 .hero-content h1 {
     font-size: 3rem;
     font-weight: bold;
-    color: #001f3f; 
+    color: #001f3f;
     text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
     margin-bottom: 20px;
 }
 
 .hero-content p {
-    color: #2C3E50; 
+    color: #2C3E50;
     font-weight: 400;
     font-size: 1.2rem;
     margin-bottom: 30px;
@@ -86,16 +100,19 @@
     color: #ffffff;
 }
 
-.text-white h2, .text-white h3 {
+.text-white h2,
+.text-white h3 {
     font-weight: bold;
 }
 
-.vision-card, .mission-card {
+.vision-card,
+.mission-card {
     background: rgba(255, 255, 255, 0.1);
     transition: transform 0.3s ease, background 0.3s ease;
 }
 
-.vision-card:hover, .mission-card:hover {
+.vision-card:hover,
+.mission-card:hover {
     transform: translateY(-10px);
     background: rgba(255, 255, 255, 0.2);
 }
