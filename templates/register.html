@@ -10,71 +10,67 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="gradient-background">
-        <div class="container-fluid">
-            <form class="mx-auto">
-                <h4 class="text-center">Masuk Akun</h4>
-
-
-                <!-- Input Username -->
-                <div class="form-floating mb-4 mt-4">
+    <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
+        <form class="mx-auto">
+            <h4 class="text-center">Daftar Akun</h4>
+            <!-- Input Username -->
+            <div class="form-floating mb-4 mt-4">
                 <div class="input-group">
                     <span class="input-group-text">
                         <i class="fas fa-user me-2"></i> <!-- Icon username -->
                     </span>
                     <input type="text" class="form-control" id="floatingInput" placeholder="Masukkan Username" required>
                 </div>
-                </div>
-                
-                <!-- Input Email -->
-                <div class="form-floating mb-4 mt-4">
+            </div>
+            
+            <!-- Input Email -->
+            <div class="form-floating mb-4 mt-4">
                 <div class="input-group">
                     <span class="input-group-text">
                         <i class="fa-solid fa-envelope me-2"></i> <!-- Icon email -->
                     </span>
                     <input type="email" class="form-control" id="floatingInputEmail" placeholder="Masukkan Email" required>
                 </div>
-                </div>
-
+            </div>
+    
             <!-- Make Password -->
-                <div class="form-floating mb-4 ">
-                    <div class="input-group">
+            <div class="form-floating mb-4">
+                <div class="input-group">
                     <span class="input-group-text">
                         <i class="fas fa-lock me-2"></i> <!-- Icon password -->
                     </span>
-                    <input type="password" class="form-control me-2" id="makePassword" placeholder="Password" required>
-                    </span>
+                    <input type="password" class="form-control me-2" id="makePassword" placeholder="Buat Password" required>
                 </div>
-                </div>
-            
-                <!-- Input Password -->
-                <div class="form-floating mb-4 ">
-                    <div class="input-group">
+            </div>
+        
+            <!-- Input Password -->
+            <div class="form-floating mb-4">
+                <div class="input-group">
                     <span class="input-group-text">
                         <i class="fas fa-lock me-2"></i> <!-- Icon password -->
                     </span>
-                    <input type="password" class="form-control me-2" id="InputPassword" placeholder="Password" required>
+                    <input type="password" class="form-control me-2" id="InputPassword" placeholder="Masukkan Ulang Password" required>
                     <span class="input-group-text toggle-password" onclick="togglePasswordVisibility()">
                         <i id="eyeIcon" class="fas fa-eye" style="cursor: pointer;"></i> <!-- Icon mata -->
                     </span>
                 </div>
+            </div>
+            
+            <!-- Baris baru untuk 'Ingat saya' dan 'Lupa password' -->
+            <div class="d-flex justify-content-between align-items-center mt-2 mb-3">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Terima syarat dan ketentuan</label>
                 </div>
-                
-                    <!-- Baris baru untuk 'Ingat saya' dan 'Lupa password' -->
-                    <div class="d-flex justify-content-between align-items-center mt-2 mb-3">
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Terima syarat dan ketentuan</label>
-                    </div>
-                    </div>
-                
-                
-                
-                <button type="submit" href="#" class="btn btn-primary mt-3 mb-3" style="width: 100%; border: none; border-radius: 10px;">Masuk</button>
-                <div class="text-center mt-3">
-                    <span>Sudah punya akun? <a href="/login" class="text-decoration-none">Masuk sekarang</a></span>
-                </div>
-            </form>
-        </div>
+            </div>
+    
+            <button type="submit" href="#" class="btn btn-primary mt-3 mb-3" style="width: 100%; border: none; border-radius: 10px;">Masuk</button>
+            <div class="text-center mt-3">
+                <span>Sudah punya akun? <a href="/login" class="text-decoration-none">Masuk sekarang</a></span>
+            </div>
+        </form>
+    </div>
+    
 
 
 

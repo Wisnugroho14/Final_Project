@@ -41,6 +41,24 @@
     max-width: 100%; /* Responsif pada perangkat kecil */
 }
 
+/* Custom Toggler Button */
+.custom-toggler {
+    border: none; /* Menghapus border */
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+  
+  /* Mengubah warna ikon toggler */
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+  
+  /* Tambahkan efek hover jika diinginkan */
+.custom-toggler:hover {
+    background-color: #D62C2C;
+}
+
+
 /* KONTAK */
 
 .contact-section {
@@ -103,12 +121,13 @@
 
 /* LOGIN */
 form{
-    width: 24%;
+    width: 100%;
+    max-width: 400px; 
     background-color: white;
     padding: 50px;
     border-radius: 20px;
-    margin-top: 150px;
- }
+}
+
 
 .form-control{
     color: black;
@@ -139,3 +158,11 @@ form{
         width: 100% !important;
     }
   }
+
+/* REGISTER */
+.container-fluid {
+    display: flex; /* Aktifkan flexbox */
+    justify-content: center; /* Posisikan horizontal ke tengah */
+    align-items: center; /* Posisikan vertikal ke tengah */
+    min-height: 100vh; /* Tinggi minimum sama dengan tinggi viewport */
+}
