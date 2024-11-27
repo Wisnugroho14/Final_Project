@@ -1,4 +1,5 @@
 /* Ini Style Css */
+/* Ini Style Css */
 
 /* Navbar */
 .navbar {
@@ -24,7 +25,8 @@
 
 .btn-signup {
   background-color: #D62C2C;
-  border-color: #D62C2C;;
+  border-color: #D62C2C;
+  ;
   color: white;
 }
 
@@ -36,7 +38,8 @@
 
 /* Custom Toggler Button */
 .custom-toggler {
-  border: none; /* Menghapus border */
+  border: none;
+  /* Menghapus border */
   padding: 0.5rem;
   border-radius: 5px;
 }
@@ -48,30 +51,38 @@
 
 /* Tambahkan efek hover jika diinginkan */
 .custom-toggler:hover {
-  background-color: #D62C2C; /* Warna biru lebih gelap */
+  background-color: #D62C2C;
+  /* Warna biru lebih gelap */
 }
 
 /* End Navbar */
 
 /* Carousel card */
 .carousel-inner img {
-  max-height: 500px; /* Atur tinggi maksimum */
+  max-height: 500px;
+  /* Atur tinggi maksimum */
   height: auto;
-  object-fit: cover; /* Menyesuaikan gambar tanpa mengubah proporsi */
+  object-fit: cover;
+  /* Menyesuaikan gambar tanpa mengubah proporsi */
 }
 
 .carousel {
-  width: 100%; /* Lebar penuh sesuai layar */
-  margin: 0 auto; /* Agar tetap di tengah */
+  width: 100%;
+  /* Lebar penuh sesuai layar */
+  margin: 0 auto;
+  /* Agar tetap di tengah */
 }
 
 
 
 /* Keunggulan BBC */
 .custom-list-group {
-  border: none; /* Hilangkan border keseluruhan */
-  border-radius: 0; /* Hilangkan tepi melengkung */
-  overflow: hidden; /* Tetap menghilangkan overflow */
+  border: none;
+  /* Hilangkan border keseluruhan */
+  border-radius: 0;
+  /* Hilangkan tepi melengkung */
+  overflow: hidden;
+  /* Tetap menghilangkan overflow */
 }
 
 .custom-list-group .list-group-item {
@@ -80,16 +91,20 @@
   padding: 10px 15px;
   font-size: 16px;
   color: #333;
-  background-color: #fff; /* Pastikan latar belakang tetap putih */
-  transition: background-color 0.3s ease; /* Animasi saat hover */
+  background-color: #fff;
+  /* Pastikan latar belakang tetap putih */
+  transition: background-color 0.3s ease;
+  /* Animasi saat hover */
 }
 
-.custom-list-group .list-group-item + .list-group-item {
-  margin-top: 8px; /* Jarak antar item */
+.custom-list-group .list-group-item+.list-group-item {
+  margin-top: 8px;
+  /* Jarak antar item */
 }
 
 .custom-list-group .list-group-item:hover {
-  background-color: #f8f9fa; /* Warna latar saat hover */
+  background-color: #f8f9fa;
+  /* Warna latar saat hover */
 }
 
 .custom-list-group .icon {
@@ -98,6 +113,7 @@
   font-size: 18px;
   font-weight: bold;
 }
+
 /* End */
 
 /* Harga Program */
@@ -108,54 +124,76 @@
   min-height: 100%;
 }
 
-.row > .col {
-  margin-bottom: 1rem; /* Jarak antar card */
+.row>.col {
+  margin-bottom: 1rem;
+  /* Jarak antar card */
 }
 
 .card {
-  border: none; /* Hilangkan border default */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+  border: none;
+  /* Hilangkan border default */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Tambahkan bayangan */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .card:hover {
-  transform: translateY(-10px); /* Efek hover mengangkat card */
+  transform: translateY(-10px);
+  /* Efek hover mengangkat card */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+
 .card-header {
-  background-color: #001f3f; /* Warna biru untuk header */
-  color: white; /* Teks putih di header */
+  background-color: #001f3f;
+  /* Warna biru untuk header */
+  color: white;
+  /* Teks putih di header */
   font-weight: bold;
-  border-radius: 0.5rem 0.5rem 0 0; /* Round corners atas */
+  border-radius: 0.5rem 0.5rem 0 0;
+  /* Round corners atas */
 }
+
 .card-body {
-  background-color: white; /* Warna latar belakang putih */
+  background-color: white;
+  /* Warna latar belakang putih */
 }
+
 .pricing-card-title {
-  color: #D62C2C; /* Warna biru untuk harga */
+  color: #D62C2C;
+  /* Warna biru untuk harga */
   font-weight: bold;
 }
+
 ul {
-  text-align: left; /* Rata kiri untuk daftar */
+  text-align: left;
+  /* Rata kiri untuk daftar */
   padding: 0;
 }
+
 ul li {
-  margin-bottom: 0.5rem; /* Spasi antar item daftar */
+  margin-bottom: 0.5rem;
+  /* Spasi antar item daftar */
 }
-  
+
 .center-card {
-  margin: 0 auto; /* Menambahkan margin otomatis untuk menempatkan card di tengah */
+  margin: 0 auto;
+  /* Menambahkan margin otomatis untuk menempatkan card di tengah */
 }
 
 .text-center-container {
   display: flex;
-  justify-content: center; /* Pusatkan secara horizontal */
-  align-items: center; /* Opsional: Pusatkan secara vertikal */
+  justify-content: center;
+  /* Pusatkan secara horizontal */
+  align-items: center;
+  /* Opsional: Pusatkan secara vertikal */
 }
 
 .underline-title {
   position: relative;
-  display: inline-block ; /* Agar ukurannya menyesuaikan dengan teks */
-  margin-bottom: 20px; /* Opsional: Sesuaikan jarak antara teks dan garis */
+  display: inline-block;
+  /* Agar ukurannya menyesuaikan dengan teks */
+  margin-bottom: 20px;
+  /* Opsional: Sesuaikan jarak antara teks dan garis */
   text-align: center;
 }
 
@@ -163,10 +201,14 @@ ul li {
   content: "";
   display: block;
   width: 100%;
-  height: 2px; /* Ketebalan garis */
-  background-color: #D62C2C; /* Warna garis */
-  margin-top: 5px; /* Jarak garis dari teks */
+  height: 2px;
+  /* Ketebalan garis */
+  background-color: #D62C2C;
+  /* Warna garis */
+  margin-top: 5px;
+  /* Jarak garis dari teks */
 }
+
 /* End */
 
 /* Accordion Styling */
@@ -179,7 +221,8 @@ ul li {
 }
 
 .custom-accordion .accordion-header {
-  background-color: #007bff; /* Warna biru */
+  background-color: #007bff;
+  /* Warna biru */
   color: white;
 }
 
@@ -191,7 +234,8 @@ ul li {
 }
 
 .custom-accordion .accordion-button:hover {
-  background-color: #0056b3; /* Biru gelap */
+  background-color: #0056b3;
+  /* Biru gelap */
 }
 
 .custom-accordion .accordion-button:not(.collapsed) {
@@ -210,4 +254,165 @@ ul li {
 .accordion-button,
 .accordion-collapse {
   transition: all 0.3s ease;
+}
+
+.iframe-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iframe-container iframe {
+  max-width: 100%;
+  /* Responsif pada perangkat kecil */
+}
+
+/* Custom Toggler Button */
+.custom-toggler {
+  border: none;
+  /* Menghapus border */
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+/* Mengubah warna ikon toggler */
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Tambahkan efek hover jika diinginkan */
+.custom-toggler:hover {
+  background-color: #D62C2C;
+}
+
+
+/* KONTAK */
+
+.contact-section {
+  background-color: #001f3f;
+  color: white;
+  padding: 50px 20px;
+}
+
+.contact-section .form-floating input,
+.contact-section .form-floating textarea {
+  background-color: white;
+  color: black;
+}
+
+.contact-section .form-floating label {
+  color: #333;
+}
+
+.contact-section .contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.contact-section .contact-info div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.contact-section .contact-info div img {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.contact-section button {
+  background-color: #D62C2C;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.contact-section button:hover {
+  background-color: #7a0000;
+}
+
+
+.icon {
+  width: 50px;
+  /* Atur ukuran ikon jika perlu */
+  height: 50px;
+}
+
+.contact-item a {
+  color: white;
+  /* Ubah warna teks menjadi putih */
+  font-size: 1.5rem;
+  /* Perbesar ukuran teks */
+  font-weight: 500;
+  /* Tambahkan ketebalan teks jika diperlukan */
+  text-decoration: none;
+  /* Hapus garis bawah dari teks */
+}
+
+.contact-item a:hover {
+  color: #4cf3ff;
+  /* Warna teks saat hover */
+}
+
+
+/* LOGIN */
+form {
+  width: 100%;
+  max-width: 400px;
+  background-color: white;
+  padding: 50px;
+  border-radius: 20px;
+}
+
+
+.form-control {
+  color: black;
+  border-bottom-color: black;
+  box-shadow: none !important;
+  border: none;
+  border-bottom: 1px solid;
+  border-radius: 0px;
+}
+
+.input-group-text {
+  background-color: transparent !important;
+  /* Hilangkan latar belakang */
+  border: none !important;
+  /* Hilangkan border */
+  padding: 0 !important;
+  /* Kurangi padding bawaan */
+}
+
+.gradient-background {
+  background: linear-gradient(to right,
+          /* Mengatur gradien horizontal */
+          rgb(16, 0, 0),
+          /* Warna pertama */
+          rgba(2, 1, 106, 1),
+          /* Warna kedua */
+          rgba(0, 4, 255, 1)
+          /* Warna ketiga */
+      );
+}
+
+@media only screen and (max-width:600px) {
+  form {
+      width: 100% !important;
+  }
+}
+
+/* REGISTER */
+.container-fluid {
+  display: flex;
+  /* Aktifkan flexbox */
+  justify-content: center;
+  /* Posisikan horizontal ke tengah */
+  align-items: center;
+  /* Posisikan vertikal ke tengah */
+  min-height: 100vh;
+  /* Tinggi minimum sama dengan tinggi viewport */
 }
