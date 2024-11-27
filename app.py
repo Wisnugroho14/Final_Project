@@ -12,6 +12,16 @@ client = MongoClient("mongodb+srv://test:sparta@cluster0.kbfqt.mongodb.net/?retr
 def index():
     return render_template('index.html')
 
+# Halaman About:
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+# Halaman Form:
+@app.route('/form')
+def form():
+    return render_template('form.html')
+
 # Halaman Contact:    
 @app.route('/contact')
 def contact():
