@@ -37,6 +37,21 @@ def login():
 def register():
     return render_template('register.html')
 
+# Halaman Admin: 
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
+
+# Halaman admin user:
+@app.route('/user')
+def user():
+    return render_template('user.html')
+
+# Halaman admin program: 
+@app.route('/program-admin')
+def programAdmin():
+    return render_template('program-admin.html')
+  
 # Halaman Program: 
 @app.route('/program')
 def program():
