@@ -93,7 +93,7 @@
   /* Animasi saat hover */
 }
 
-.custom-list-group .list-group-item + .list-group-item {
+.custom-list-group .list-group-item+.list-group-item {
   margin-top: 8px;
   /* Jarak antar item */
 }
@@ -120,7 +120,7 @@
   min-height: 100%;
 }
 
-.row > .col {
+.row>.col {
   margin-bottom: 1rem;
   /* Jarak antar card */
 }
@@ -380,12 +380,15 @@ form {
 }
 
 .gradient-background {
-  background: linear-gradient(
-    to right,
-    /* Mengatur gradien horizontal */ rgb(16, 0, 0),
-    /* Warna pertama */ rgba(2, 1, 106, 1),
-    /* Warna kedua */ rgba(0, 4, 255, 1) /* Warna ketiga */
-  );
+  background: linear-gradient(to right,
+      /* Mengatur gradien horizontal */
+      rgb(16, 0, 0),
+      /* Warna pertama */
+      rgba(2, 1, 106, 1),
+      /* Warna kedua */
+      rgba(0, 4, 255, 1)
+      /* Warna ketiga */
+    );
 }
 
 @media only screen and (max-width: 600px) {
@@ -410,10 +413,8 @@ form {
 .hero-section {
   position: relative;
   height: 400px;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.8),
-      rgba(255, 255, 255, 0.5)
-    ),
+  background: linear-gradient(rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.5)),
     url("/static/img/profil_bbc.jpeg");
   background-size: cover;
   background-position: center;
@@ -592,4 +593,156 @@ img:hover {
   background-color: #001f3f;
   color: #ffffff;
   padding: 50px 0;
+}
+
+/* Program */
+.program .card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.program .row-center {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.program .card-body {
+  background-color: #d62c2c;
+  color: #fff;
+  border-radius: 0 0 5px 5px;
+}
+
+.program .card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.program .card-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.program button.btn-primary {
+  background-color: #007bff;
+  border: none;
+  font-size: 0.9rem;
+}
+
+.program button.btn-primary:hover {
+  background-color: #0056b3;
+  border: none;
+  font-size: 0.9rem;
+}
+
+.program img.card-img-top {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.mekanisme-belajar-section {
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8d7da, #ffe0e6);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mekanisme-belajar-section h2 {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.mekanisme-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mekanisme-wrapper img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Detail Program */
+.detail-section {
+  position: relative;
+  height: 350px;
+  background: linear-gradient(rgba(241, 48, 48, 0.884), rgba(247, 125, 125, 0.829)),
+    url("/static/img/program_bbc.jpg") no-repeat center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detail-content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
+  margin-bottom: 10px;
+}
+
+.detail-content h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
+  margin-bottom: 20px;
+}
+
+.detail-content p {
+  color: white;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.detail-section .btn-daftar {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  padding: 12px 25px;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.detail-section .btn-daftar:hover {
+  background-color: #0056b3;
+  color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-success {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: left;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #e74c3c, #ff7f50 ); /* Gradasi merah ke oranye */
+  color: #fff; /* Warna teks putih */
+  border: none; /* Menghilangkan border */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+}
+
+.btn-success:hover {
+  background: linear-gradient(45deg, #ff5733, #ffa502); /* Gradasi saat hover */
+  transform: scale(1.05); /* Efek zoom */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Menambah bayangan */
+}
+
+/* Footer */
+footer {
+  background-color: #d62c2c;
 }
