@@ -107,8 +107,14 @@
             </ul>
 
             <!-- Buttons (Masuk and Daftar) -->
-            <button onclick="location.href='/login'" class="btn btn-outline-light me-2">Masuk</button>
-            <button onclick="location.href='/register'" class="btn btn-signup">Daftar</button>
+            {% if session['logged_in'] %}
+            <div id="logout-animation" class="hidden">
+              <button onclick="location.href='/logout'" class="btn btn-outline-light me-2">Logout</button>
+              </div>
+            {% else %}
+              <button onclick="location.href='/login'" class="btn btn-outline-light me-2">Masuk</button>
+              <button onclick="location.href='/register'" class="btn btn-signup">Daftar</button>
+            {% endif %}
           </div>
         </div>
       </nav>

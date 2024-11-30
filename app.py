@@ -1,11 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from pymongo import MongoClient
 
 app = Flask(__name__)
 
 # Koneksi ke MongoDB
 client = MongoClient("mongodb+srv://test:sparta@cluster0.kbfqt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-
+db = client['bimble_bbc']  # Replace with your MongoDB database name
+users_collection = db['users']
+# Set a secret key for sessions
+app.secret_key = 'bbc_pati'
 
 # Halaman Utama: 
 @app.route('/')
@@ -28,13 +31,41 @@ def contact():
     return render_template('contact.html')
 
 # Halaman Login: 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        # Check if the username and password match
+        user = users_collection.find_one({'username': username, 'password': password})
+        if user:
+            flash('Login successful.', 'success')
+            # Add any additional logic, such as session management
+            session['logged_in'] = True  # Simulate a successful login
+            return redirect(url_for('index'))
+        else:
+            flash('Invalid username or password. Please try again.', 'danger')
+
     return render_template('login.html')
 
 # Halaman Register: 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+        
+
+        # Check if the username already exists
+        if users_collection.find_one({'username': username}):
+            flash('Username already exists. Choose a different one.', 'danger')
+        else:
+            users_collection.insert_one({'username': username, 'password': password})
+            flash('Registration successful. You can now log in.', 'success')
+            return redirect(url_for('login'))
+
     return render_template('register.html')
 
 # Halaman Admin: 
@@ -138,6 +169,11 @@ def program_detail(program_name):
         return render_template('404.html'), 404
 
     return render_template('program_detail.html', program=program)
+
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)  # Remove the logged-in session
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
