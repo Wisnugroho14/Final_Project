@@ -22,6 +22,30 @@
   font-weight: bold;
 }
 
+/* Aktifkan dropdown saat hover */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.nav-item.dropdown .dropdown-menu {
+  margin-top: 0; 
+}
+
+.nav-item.dropdown:hover > .nav-link {
+  color: #d62c2c; 
+}
+
+/* Pastikan ikon dropdown berada di sebelah kanan teks */
+.navbar .dropdown-toggle {
+  display: flex;
+  align-items: center; /* Menyelaraskan teks dan ikon secara vertikal */
+}
+
+.navbar .dropdown-toggle::after {
+  margin-left: 0.5em; /* Menambahkan jarak antara teks dan ikon */
+  vertical-align: middle; /* Menyelaraskan ikon secara vertikal */
+}
+
 .btn-signup {
   background-color: #d62c2c;
   border-color: #d62c2c;

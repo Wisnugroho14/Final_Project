@@ -135,8 +135,8 @@ def program_detail(program_name):
         },
 
         "private": {
-            "title": "English for Adult",
-            "description": "English for Adults adalah program pelatihan Bahasa Inggris yang diperuntukkan bagi pelajar SMA/SMK sederajat dan dewasa seperti mahasiswa, karyawan, profesional, pelaku bisnis, ibu rumah tangga, dan lainnya.",
+            "title": "English Private Class",
+            "description": "English Private Class adalah program pelatihan Bahasa Inggris yang diperuntukkan bagi individu yang ingin mendapatkan pengalaman belajar yang lebih personal dan terfokus.",
             "goals": [
                 "Meningkatkan Kepercayaan Diri dalam Penggunaan Bahasa Inggris.",
                 "Meningkatkan kemampuan berbahasa Inggris untuk kebutuhan spesifik.",
@@ -149,8 +149,8 @@ def program_detail(program_name):
         },
 
         "toefl": {
-            "title": "English for Adult",
-            "description": "English for Adults adalah program pelatihan Bahasa Inggris yang diperuntukkan bagi pelajar SMA/SMK sederajat dan dewasa seperti mahasiswa, karyawan, profesional, pelaku bisnis, ibu rumah tangga, dan lainnya.",
+            "title": "TOEFL/TOEIC Preparation",
+            "description": "TOEFL/TOEIC Preparation adalah program pelatihan Bahasa Inggris untuk mempersiapkan peserta didik menghadapi tes standar nasional dan internasional seperti TOEFL/TOEIC.",
             "goals": [
                 "Meningkatkan Keterampilan Berbahasa Inggris untuk mempersiapkan ujian.",
                 "Membantu peserta mencapai target skor TOEFL untuk keperluan akademik, beasiswa, atau pekerjaan.",
