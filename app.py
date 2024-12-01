@@ -4,16 +4,39 @@ from pymongo import MongoClient
 app = Flask(__name__)
 
 # Koneksi ke MongoDB
-client = MongoClient("mongodb+srv://test:sparta@cluster0.kbfqt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+client = MongoClient("mongodb+srv://hasanfikri:Sparta@cluster0.w7jyn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 db = client['bimble_bbc']  # Replace with your MongoDB database name
 users_collection = db['users']
 # Set a secret key for sessions
 app.secret_key = 'bbc_pati'
 
-# Halaman Utama: 
+# Kode verifikasi admin
+ADMIN_VERIFICATION_CODE = '778899'  # Ganti dengan kode rahasia yang aman
+
+# Middleware untuk proteksi login
+def login_required(f):
+    def wrap(*args, **kwargs):
+        if not session.get('logged_in'):
+            flash('Silakan login terlebih dahulu.', 'warning')
+            return redirect(url_for('login'))
+        return f(*args, **kwargs)
+    wrap.__name__ = f.__name__
+    return wrap
+
+def admin_required(f):
+    def wrap(*args, **kwargs):
+        if session.get('role') != 'admin':
+            flash('Halaman ini hanya untuk admin.', 'danger')
+            return redirect(url_for('index'))
+        return f(*args, **kwargs)
+    wrap.__name__ = f.__name__
+    return wrap
+
+# Halaman utama (user dashboard)
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 # Halaman About:
 @app.route('/about')
@@ -30,46 +53,67 @@ def form():
 def contact():
     return render_template('contact.html')
 
-# Halaman Login: 
+# Halaman login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
 
-        # Check if the username and password match
+        # Cek username dan password di database
         user = users_collection.find_one({'username': username, 'password': password})
         if user:
-            flash('Login successful.', 'success')
-            # Add any additional logic, such as session management
-            session['logged_in'] = True  # Simulate a successful login
-            return redirect(url_for('index'))
+            session['logged_in'] = True
+            session['username'] = user['username']
+            session['role'] = user['role']
+
+            flash('Login berhasil.', 'success')
+            if user['role'] == 'admin':
+                return redirect(url_for('admin'))
+            else:
+                return redirect(url_for('index'))
         else:
-            flash('Invalid username or password. Please try again.', 'danger')
+            flash('Username atau password salah.', 'danger')
 
     return render_template('login.html')
 
-# Halaman Register: 
+# Halaman register
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
-        
+        role = request.form['role']
 
-        # Check if the username already exists
+        # Periksa apakah username sudah ada
         if users_collection.find_one({'username': username}):
-            flash('Username already exists. Choose a different one.', 'danger')
-        else:
-            users_collection.insert_one({'username': username, 'password': password})
-            flash('Registration successful. You can now log in.', 'success')
-            return redirect(url_for('login'))
+            flash('Username sudah digunakan. Silakan pilih yang lain.', 'danger')
+            return render_template('register.html')
+
+        # Jika role adalah admin, periksa kode verifikasi
+        if role == 'admin':
+            verification_code = request.form['verification_code']
+            if verification_code != ADMIN_VERIFICATION_CODE:
+                flash('Kode verifikasi salah. Anda tidak dapat mendaftar sebagai admin.', 'danger')
+                return render_template('register.html')
+
+        # Simpan data pengguna ke database
+        users_collection.insert_one({
+            'username': username,
+            'email': email,
+            'password': password,
+            'role': role
+        })
+        flash('Registrasi berhasil. Silakan login.', 'success')
+        return redirect(url_for('login'))
 
     return render_template('register.html')
 
-# Halaman Admin: 
+# Halaman admin dashboard
 @app.route('/admin')
+@login_required
+@admin_required
 def admin():
     return render_template('admin.html')
 
@@ -170,10 +214,12 @@ def program_detail(program_name):
 
     return render_template('program_detail.html', program=program)
 
+# Halaman logout
 @app.route('/logout')
 def logout():
-    session.pop('logged_in', None)  # Remove the logged-in session
-    return redirect(url_for('index'))
+    session.clear()  # Hapus semua data di session
+    flash('Anda telah keluar.', 'success')
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)

@@ -12,7 +12,7 @@
     />
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
-      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      integrity="sha256-H+KZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     ></script>
     <link
@@ -33,7 +33,6 @@
         {% with messages = get_flashed_messages() %} {% if messages %}
         <ul class="messages">
           {% for message in messages %}
-          <!-- alert -->
           <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>{{ message }}</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -41,12 +40,12 @@
           {% endfor %}
         </ul>
         {% endif %} {% endwith %}
+
         <!-- Input Username -->
         <div class="form-floating mb-4 mt-4">
           <div class="input-group">
             <span class="input-group-text">
               <i class="fas fa-user me-2"></i>
-              <!-- Icon username -->
             </span>
             <input
               type="text"
@@ -64,7 +63,6 @@
           <div class="input-group">
             <span class="input-group-text">
               <i class="fa-solid fa-envelope me-2"></i>
-              <!-- Icon email -->
             </span>
             <input
               type="email"
@@ -77,16 +75,15 @@
           </div>
         </div>
 
-        <!-- Make Password -->
+        <!-- Input Password -->
         <div class="form-floating mb-4">
           <div class="input-group">
             <span class="input-group-text">
               <i class="fas fa-lock me-2"></i>
-              <!-- Icon password -->
             </span>
             <input
               type="password"
-              class="form-control me-2"
+              class="form-control"
               id="password"
               placeholder="Buat Password"
               name="password"
@@ -95,7 +92,45 @@
           </div>
         </div>
 
-        <!-- Baris baru untuk 'Ingat saya' dan 'Lupa password' -->
+        <!-- Pilih Role -->
+        <div class="form-floating mb-4">
+          <div class="input-group">
+          <label for="role" class="me-2">Pilih Role</label>
+          <select
+            class="form-select"
+            id="role"
+            name="role"
+            onchange="toggleVerificationCode()"
+            required
+          >
+            <option value=""disabled selected></option>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+        </div>
+
+        <!-- Input Kode Verifikasi -->
+        <div
+          class="form-floating mb-4"
+          id="verification-code-field"
+          style="display: none;"
+        >
+          <div class="input-group">
+            <span class="input-group-text">
+              <i class="fas fa-key me-2"></i>
+            </span>
+            <input
+              type="text"
+              class="form-control"
+              id="verification_code"
+              placeholder="Masukkan Kode Verifikasi"
+              name="verification_code"
+            />
+          </div>
+        </div>
+
+        <!-- Checkbox -->
         <div
           class="d-flex justify-content-between align-items-center mt-2 mb-3"
         >
@@ -103,47 +138,40 @@
             <input
               type="checkbox"
               class="form-check-input"
-              id="exampleCheck1"
+              id="termsCheck"
+              required
             />
-            <label class="form-check-label" for="exampleCheck1"
-              >Terima syarat dan ketentuan</label
-            >
+            <label class="form-check-label" for="termsCheck">
+              Terima syarat dan ketentuan
+            </label>
           </div>
         </div>
 
         <button
           type="submit"
-          href="#"
           class="btn btn-primary mt-3 mb-3"
           style="width: 100%; border: none; border-radius: 10px"
         >
-          Masuk
+          Daftar
         </button>
         <div class="text-center mt-3">
-          <span
-            >Sudah punya akun?
-            <a href="/login" class="text-decoration-none"
-              >Masuk sekarang</a
-            ></span
-          >
+          <span>
+            Sudah punya akun?
+            <a href="{{ url_for('login') }}" class="text-decoration-none">
+              Masuk sekarang
+            </a>
+          </span>
         </div>
       </form>
     </div>
 
     <script>
-      function togglePasswordVisibility() {
-        const passwordInput = document.getElementById("password");
-        const passwordIcon = document.getElementById("eyeIcon");
-
-        if (passwordInput.type === "password") {
-          passwordInput.type = "text";
-          passwordIcon.classList.remove("fa-eye");
-          passwordIcon.classList.add("fa-eye-slash");
-        } else {
-          passwordInput.type = "password";
-          passwordIcon.classList.remove("fa-eye-slash");
-          passwordIcon.classList.add("fa-eye");
-        }
+      function toggleVerificationCode() {
+        const role = document.getElementById("role").value;
+        const verificationCodeField = document.getElementById(
+          "verification-code-field"
+        );
+        verificationCodeField.style.display = role === "admin" ? "block" : "none";
       }
     </script>
 
