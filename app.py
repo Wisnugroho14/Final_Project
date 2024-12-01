@@ -120,7 +120,8 @@ def admin():
 # Halaman admin user:
 @app.route('/user')
 def user():
-    return render_template('user.html')
+    users = db.users.find()
+    return render_template('user.html', users=users)
 
 # Halaman admin program: 
 @app.route('/program-admin')
