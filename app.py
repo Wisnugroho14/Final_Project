@@ -4,7 +4,7 @@ from pymongo import MongoClient
 app = Flask(__name__)
 
 # Koneksi ke MongoDB
-client = MongoClient("mongodb+srv://hasanfikri:Sparta@cluster0.w7jyn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+client = MongoClient("mongodb+srv://test:sparta@cluster0.kbfqt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 db = client['bimble_bbc']  # Replace with your MongoDB database name
 users_collection = db['users']
 # Set a secret key for sessions
@@ -219,7 +219,7 @@ def program_detail(program_name):
 def logout():
     session.clear()  # Hapus semua data di session
     flash('Anda telah keluar.', 'success')
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
