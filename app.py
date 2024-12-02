@@ -3,12 +3,14 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import bcrypt
 
+
 app = Flask(__name__)
 
 # Koneksi ke MongoDB
 client = MongoClient("mongodb+srv://test:sparta@cluster0.kbfqt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 db = client['bimble_bbc']  # Replace with your MongoDB database name
 users_collection = db['users']
+programs_collection = db['programs']
 # Set a secret key for sessions
 app.secret_key = 'bbc_pati'
 
@@ -37,7 +39,11 @@ def admin_required(f):
 # Halaman utama (user dashboard)
 @app.route('/')
 def index():
-    return render_template('index.html')
+    client = MongoClient("mongodb+srv://test:sparta@cluster0.kbfqt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+    db = client['bimble_bbc']
+    programs_collection = db['programs']
+    programs = list(programs_collection.find({}))  # Mengambil semua data program
+    return render_template('index.html', programs=programs)
 
 
 # Halaman About:
@@ -132,8 +138,86 @@ def user():
 
 # Halaman admin program: 
 @app.route('/program-admin')
-def programAdmin():
-    return render_template('program-admin.html')
+@login_required
+@admin_required
+def program_admin():
+    programs = db.programs.find()
+    return render_template('program-admin.html', programs=programs)
+
+@app.route('/program-admin/add', methods=['POST'])
+@login_required
+@admin_required
+def add_program():
+    if request.method == 'POST':
+        # Ambil data dari form
+        kategori = request.form['kategori']
+        level = request.form['level']
+        harga = request.form['harga']
+        jadwal = request.form['jadwal']
+
+        # Simpan data ke MongoDB
+        programs_collection.insert_one({
+            'kategori': kategori,
+            'level': level,
+            'harga': harga,
+            'jadwal': jadwal
+        })
+
+        # Berikan pesan sukses dan redirect ke halaman program-admin
+        flash('Program berhasil ditambahkan.', 'success')
+        return redirect(url_for('program_admin'))
+
+@app.route('/program-admin/edit/<program_id>', methods=['GET', 'POST'])
+@login_required
+@admin_required
+def edit_program(program_id):
+    program = db.programs.find_one({'_id': ObjectId(program_id)})
+
+    if not program:
+        flash('Program tidak ditemukan.', 'danger')
+        return redirect(url_for('program_admin'))
+
+    if request.method == 'POST':
+        kategori = request.form['kategori']
+        level = request.form['level']
+        harga = request.form['harga']
+        jadwal = request.form['jadwal']
+
+        db.programs.update_one(
+            {'_id': ObjectId(program_id)},
+            {'$set': {
+                'kategori': kategori,
+                'level': level,
+                'harga': harga,
+                'jadwal': jadwal
+            }}
+        )
+
+        flash('Program berhasil diupdate.', 'success')
+        return redirect(url_for('program_admin'))
+
+    return render_template('edit_program.html', program=program)
+
+@app.route('/program-admin/view/<program_id>', methods=['GET'])
+@login_required
+@admin_required
+def view_program(program_id):
+    program = db.programs.find_one({'_id': ObjectId(program_id)})
+
+    if not program:
+        flash('Program tidak ditemukan.', 'danger')
+        return redirect(url_for('program_admin'))
+
+    return render_template('view_program.html', program=program)
+
+@app.route('/program-admin/delete/<program_id>', methods=['POST'])
+@login_required
+@admin_required
+def delete_program(program_id):
+    db.programs.delete_one({'_id': ObjectId(program_id)})
+    flash('Program berhasil dihapus.', 'success')
+    return redirect(url_for('program_admin'))
+
   
 # Halaman Program: 
 @app.route('/program')

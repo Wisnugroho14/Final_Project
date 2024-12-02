@@ -1,328 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
 
-    <title>BBC Admin</title>
-    <!-- Custom styles for this template -->
-    <link
-      href="{{ url_for('static', filename='sb-admin-2.min.css') }}"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      /* Styling for action buttons */
-      .action-buttons {
-        display: flex;
-        gap: 10px; /* Spacing between buttons */
-        justify-content: center; /* Center-align buttons */
-      }
-      /* Center align text in table headers and cells */
-      table th,
-      table td {
-        text-align: center;
-        vertical-align: middle; /* Optional: align text vertically in the middle */
-      }
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>BBC Admin</title>
+  <!-- Custom styles -->
+  <link href="{{ url_for('static', filename='sb-admin-2.min.css') }}" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+  <style>
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      
+    }
 
-      /* Styling for table headers */
-      table th {
-        background-color: #001f3f; /* Navy blue background */
-        color: #ffffff; /* White text for better contrast */
-        text-align: center; /* Center-align text */
-        vertical-align: middle; /* Align text vertically */
-        padding: 10px; /* Optional: Add some padding for better spacing */
-      }
+    table th,
+    table td {
+      text-align: center;
+      vertical-align: middle;
+    }
 
-      .action-buttons a {
-        flex: 1; /* Optional: make buttons of equal size */
+    table th {
+      background-color: #001f3f;
+      color: #ffffff;
+      padding: 10px;
+    }
 
-        @media (max-width: 768px) {
-          .action-buttons {
-            flex-direction: column; /* Stack buttons vertically */
-            align-items: stretch; /* Full width buttons */
-          }
-        }
-      }
-    </style>
-  </head>
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+    }
+  </style>
+</head>
 
-  <body id="page-top">
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-      <!-- Sidebar -->
-      <ul
-        class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-        id="accordionSidebar"
-      >
-        <!-- Sidebar - Brand -->
-        <a
-          class="sidebar-brand d-flex align-items-center justify-content-center"
-          href="/admin"
-        >
-          <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-book-open"></i>
-          </div>
-          <div class="sidebar-brand-text mx-3">BBC</div>
-        </a>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0" />
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
-          <a class="nav-link" href="/admin"> <span>Dashboard</span></a>
-        </li>
-
-        <!-- Nav Item - Tables -->
-        <li class="nav-item">
-          <a class="nav-link" href="/user"> <span>Users</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/program-admin"> <span>Program</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="tables.html"> <span>Pendaftaran</span></a>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block" />
-      </ul>
-      <!-- End of Sidebar -->
-
-      <!-- Content Wrapper -->
-      <div id="content-wrapper" class="d-flex flex-column">
-        <!-- Main Content -->
-        <div id="content">
-          <!-- Topbar -->
-          <nav
-            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
-          >
-            <!-- Topbar Search -->
-            <!-- Topbar Navbar -->
-            <ul class="navbar-nav ml-auto">
-              <div class="topbar-divider d-none d-sm-block"></div>
-              <!-- Nav Item - User Information -->
-              <li class="nav-item dropdown no-arrow">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="userDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                    >Admin</span
-                  >
-                  <img
-                    class="img-profile rounded-circle"
-                    src="{{ url_for('static', filename='img/gantot.png') }}"
-                  />
-                </a>
-                <!-- Dropdown - User Information -->
-                <div
-                  class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                  aria-labelledby="userDropdown"
-                >
-                  <div class="dropdown-divider"></div>
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                    data-toggle="modal"
-                    data-target="#logoutModal"
-                  >
-                    <i
-                      class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
-                    ></i>
-                    Logout
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </nav>
-          <!-- End of Topbar -->
-
-          <!-- Begin Page Content -->
-
-          <!-- Begin Page Content -->
-          <div class="container-fluid">
-            <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Programs Table</h1>
-
-            <!-- DataTales Example -->
-            <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Programs</h6>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table
-                    class="table table-bordered"
-                    id="dataTable"
-                    width="100%"
-                    cellspacing="0"
-                  >
-                    <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>Kategori Program</th>
-                        <th>Deskripsi</th>
-                        <th>Level</th>
-                        <th>Harga</th>
-                        <th>Jadwal</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>English for Children</td>
-                        <td>
-                          Kursus pemrograman Python untuk pemula hingga tingkat
-                          mahir.
-                        </td>
-                        <td>Kindergarten 1-2</td>
-                        <td>550.000</td>
-                        <td>4 bulan</td>
-                        <td>
-                          <div class="action-buttons">
-                            <a href="#" class="btn btn-warning btn-sm">
-                              <i class="fas fa-eye"></i> View
-                            </a>
-                            <a href="#" class="btn btn-primary btn-sm">
-                              <i class="fas fa-edit"></i> Edit
-                            </a>
-                            <a href="#" class="btn btn-danger btn-sm">
-                              <i class="fas fa-trash"></i> Delete
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>English for Teens</td>
-                        <td>
-                          Pelatihan desain grafis menggunakan Adobe Photoshop
-                          dan Illustrator.
-                        </td>
-                        <td>Pre Beginner 1</td>
-                        <td>460.000</td>
-                        <td>3 Bulan</td>
-                        <td>
-                          <div class="action-buttons">
-                            <a href="#" class="btn btn-warning btn-sm">
-                              <i class="fas fa-eye"></i> View
-                            </a>
-                            <a href="#" class="btn btn-primary btn-sm">
-                              <i class="fas fa-edit"></i> Edit
-                            </a>
-                            <a href="#" class="btn btn-danger btn-sm">
-                              <i class="fas fa-trash"></i> Delete
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>English for Adults</td>
-                        <td>
-                          Program pelatihan untuk meningkatkan kemampuan
-                          berbicara di depan umum.
-                        </td>
-                        <td>Basic 1</td>
-                        <td>480.000</td>
-                        <td>3 Bulan</td>
-                        <td>
-                          <div class="action-buttons">
-                            <a href="#" class="btn btn-warning btn-sm">
-                              <i class="fas fa-eye"></i> View
-                            </a>
-                            <a href="#" class="btn btn-primary btn-sm">
-                              <i class="fas fa-edit"></i> Edit
-                            </a>
-                            <a href="#" class="btn btn-danger btn-sm">
-                              <i class="fas fa-trash"></i> Delete
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /.container-fluid -->
-
-          <!-- /.container-fluid -->
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-book-open"></i>
         </div>
-        <!-- End of Main Content -->
+        <div class="sidebar-brand-text mx-3">BBC</div>
+      </a>
+      <hr class="sidebar-divider my-0" />
+      <li class="nav-item">
+        <a class="nav-link" href="/admin"> <span>Dashboard</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/user"> <span>Users</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/program-admin"> <span>Program</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/pendaftaran"> <span>Pendaftaran</span></a>
+      </li>
+      <hr class="sidebar-divider d-none d-md-block" />
+    </ul>
 
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright &copy; BBC 2024</span>
-            </div>
-          </div>
-        </footer>
-        <!-- End of Footer -->
-      </div>
-      <!-- End of Content Wrapper -->
-    </div>
-    <!-- End of Page Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+          <ul class="navbar-nav ml-auto">
+            <div class="topbar-divider d-none d-sm-block"></div>
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                <img class="img-profile rounded-circle" src="{{ url_for('static', filename='img/gantot.png') }}" />
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+          </ul>
+        </nav>
 
-    <!-- Logout Modal-->
-    <div
-      class="modal fade"
-      id="logoutModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button
-              class="close"
-              type="button"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">×</span>
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <h1 class="h3 mb-2 text-gray-800">Programs Table</h1>
+          <div class="mb-3">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#addProgramModal">
+              <i class="fas fa-plus"></i> Add Program
             </button>
           </div>
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Programs</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Kategori Program</th>
+                      <th>Level</th>
+                      <th>Harga</th>
+                      <th>Jadwal</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for program in programs %}
+                    <tr>
+                      <td>{{ loop.index }}</td>
+                      <td>{{ program.kategori }}</td>
+                      <td>{{ program.level }}</td>
+                      <td>{{ program.harga }}</td>
+                      <td>{{ program.jadwal }}</td>
+                      <td>
+                        <div class="action-buttons">
+                          <a href="{{ url_for('edit_program', program_id=program['_id']) }}"
+                            class="btn btn-primary btn-sm">
+                            <i class="fas fa-edit"></i> Edit
+                          </a>
+                          <a href="{{ url_for('view_program', program_id=program['_id']) }}" class="btn btn-warning btn-sm">
+                            <i class="fas fa-eye"></i> View
+                          </a>
+                          <form action="{{ url_for('delete_program', program_id=program['_id']) }}" method="POST"
+                            style="display:inline;">
+                            <button class="btn btn-danger btn-sm" type="submit"
+                              onclick="return confirm('Apakah Anda yakin ingin menghapus program ini?');">
+                              <i class="fas fa-trash"></i> Delete
+                            </button>
+                          </form>
+                        </div>
+                      </td>
+
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; BBC 2024</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <!-- Add Program Modal -->
+  <!-- Add Program Modal -->
+  <div class="modal fade" id="addProgramModal" tabindex="-1" role="dialog" aria-labelledby="addProgramModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form method="POST" action="/program-admin/add">
           <div class="modal-body">
-            Select "Logout" below if you are ready to end your current session.
+            <input type="text" name="kategori" placeholder="Kategori Program" required />
+            <textarea name="level" placeholder="Level" rows="4" required></textarea>
+            <input type="text" name="harga" placeholder="Harga" required />
+            <input type="text" name="jadwal" placeholder="Jadwal" required />
           </div>
           <div class="modal-footer">
-            <button
-              class="btn btn-secondary"
-              type="button"
-              data-dismiss="modal"
-            >
-              Cancel
-            </button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save</button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{ url_for('static', filename='vendor/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/bootstrap.bundle.min.js') }}"></script>
-  </body>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{ url_for('static', filename='vendor/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap.bundle.min.js') }}"></script>
+</body>
+
 </html>

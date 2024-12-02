@@ -47,7 +47,8 @@
 
             <!-- Program Dropdown -->
             <li class="nav-item dropdown ">
-              <a class="nav-link dropdown-toggle" href="/program" id="navbarDropdown" role="button" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="/program" id="navbarDropdown" role="button"
+                aria-expanded="false">
                 Program
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -197,113 +198,26 @@
       <h1 class="underline-title">Harga Program</h1>
     </div>
     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      {% for program in programs %}
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
           <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">English For Children</h4>
+            <h3 class="my-0 fw-normal">{{ program.kategori }}</h4>
           </div>
           <div class="card-body">
-            <h3 class="card-title pricing-card-title">
-              Rp. 550.000<small class="text-body-secondary fw-light">/4-3 month</small>
-            </h3>
+            <h4 class="card-title pricing-card-title">Mulai dari
+              {{ program.harga }}
+            </h4>
+            <h5 class="text-body-secondary fw-light">Durasi {{ program.jadwal }}</h5>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>Kindergarden 1-2</li>
-              <li>Prepatory Class 1A-6B</li>
-              <li>Dynamic Conversation for Children</li>
+              {% for level in program.level.splitlines() %}
+              <li>{{ level }}</li>
+              {% endfor %}
             </ul>
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">English for Teens</h4>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title pricing-card-title">
-              Rp. 460-570.000<small class="text-body-secondary fw-light">/3 month</small>
-            </h3>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>Pre Beginner 1</li>
-              <li>Pre Beginner 2</li>
-              <li>Dynamic Conversation for Teens 1</li>
-              <li>Beginner 1</li>
-              <li>Beginner 2</li>
-              <li>Dynamic Conversation for Teens 2</li>
-              <li>Pre Elementary 1</li>
-              <li>Pre Elementary 2</li>
-              <li>Dynamic Conversation for Teens 3</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">English for Adults</h4>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title pricing-card-title">
-              Rp 480-650.000<small class="text-body-secondary fw-light">/3-4 month</small>
-            </h3>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>Basic 1</li>
-              <li>Basic 2</li>
-              <li>Dynamic Conversation for Adult 1</li>
-              <li>Elementary 1</li>
-              <li>Elementary 2</li>
-              <li>Dynamic Conversation for Adult 2</li>
-              <li>Intermediate 1</li>
-              <li>Intermediate 2</li>
-              <li>Dynamic Conversation for Adult 3</li>
-              <li>Post Intermediate 1</li>
-              <li>Post Intermediate 2</li>
-              <li>Dynamic Conversation for Adult 4</li>
-              <li>Advance 1</li>
-              <li>Advance 2</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col center-card">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">English Private Class</h4>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title pricing-card-title">Rp. 750-1.050.000</h3>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>
-                Private di BBC<small class="text-body-secondary fw-light">/10x90 Pertemuan</small>
-              </li>
-              <li>
-                Private di Luar<small class="text-body-secondary fw-light">/10x90 Pertemuan</small>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col center-card">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">TOEFL/TOEIC Preparation</h4>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title pricing-card-title">Rp. 250-1.050.000</h3>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>
-                Test TOEFL/TOEIC<small class="text-body-secondary fw-light">/2 Hours Pertemuan</small>
-              </li>
-              <li>
-                Preparation TOEFL<small class="text-body-secondary fw-light">/6x90 Pertemuan</small>
-              </li>
-              <li>
-                Preparation IELTS<small class="text-body-secondary fw-light">/10x90 Pertemuan</small>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
 
     <hr class="featurette-divider" />
