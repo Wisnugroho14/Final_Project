@@ -3,7 +3,6 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import bcrypt
 
-
 app = Flask(__name__)
 
 # Koneksi ke MongoDB
