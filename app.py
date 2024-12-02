@@ -45,8 +45,10 @@ def about():
 
 # Halaman Form:
 @app.route('/form')
+@login_required
 def form():
-    return render_template('form.html')
+    flash("Silakan isi formulir untuk mendaftar.", "info")
+    return render_template("form.html")
 
 # Halaman Contact:    
 @app.route('/contact')
