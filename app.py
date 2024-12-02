@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+import bcrypt
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
@@ -68,9 +70,9 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        # Cek username dan password di database
-        user = users_collection.find_one({'username': username, 'password': password})
-        if user:
+        # Cari pengguna berdasarkan username
+        user = users_collection.find_one({'username': username})
+        if user and bcrypt.checkpw(password.encode('utf-8'), user['password'].encode('utf-8')):
             session['logged_in'] = True
             session['username'] = user['username']
             session['role'] = user['role']
@@ -94,6 +96,9 @@ def register():
         password = request.form['password']
         role = request.form['role']
 
+        # Hash password
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+
         # Periksa apakah username sudah ada
         if users_collection.find_one({'username': username}):
             flash('Username sudah digunakan. Silakan pilih yang lain.', 'danger')
@@ -110,7 +115,7 @@ def register():
         users_collection.insert_one({
             'username': username,
             'email': email,
-            'password': password,
+            'password': hashed_password,
             'role': role
         })
         flash('Registrasi berhasil. Silakan login.', 'success')
@@ -307,6 +312,56 @@ def logout():
     session.clear()  # Hapus semua data di session
     flash('Anda telah keluar.', 'success')
     return redirect(url_for('index'))
+
+# Edit, view, delete admin menu users:
+# View user details
+@app.route('/user/<user_id>')
+@login_required
+@admin_required
+def view_user(user_id):
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
+    if not user:
+        flash('Pengguna tidak ditemukan.', 'danger')
+        return redirect(url_for('user'))
+    return render_template('view_user.html', user=user)
+
+# Edit user details
+@app.route('/user/<user_id>/edit', methods=['GET', 'POST'])
+@login_required
+@admin_required
+def edit_user(user_id):
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
+    if not user:
+        flash('Pengguna tidak ditemukan.', 'danger')
+        return redirect(url_for('user'))
+    
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        role = request.form['role']
+        
+        # Update user in the database
+        users_collection.update_one(
+            {"_id": ObjectId(user_id)},
+            {"$set": {"username": username, "email": email, "role": role}}
+        )
+        flash('Data pengguna berhasil diperbarui.', 'success')
+        return redirect(url_for('user'))
+    
+    return render_template('edit_user.html', user=user)
+
+# Delete user
+@app.route('/user/<user_id>/delete', methods=['POST'])
+@login_required
+@admin_required
+def delete_user(user_id):
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
+    if not user:
+        flash('Pengguna tidak ditemukan.', 'danger')
+    else:
+        users_collection.delete_one({"_id": ObjectId(user_id)})
+        flash('Pengguna berhasil dihapus.', 'success')
+    return redirect(url_for('user'))
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
