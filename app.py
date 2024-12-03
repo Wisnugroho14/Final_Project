@@ -127,7 +127,16 @@ def register():
 @login_required
 @admin_required
 def admin():
-    return render_template('admin.html')
+    # Hitung jumlah pengguna dan program
+    total_users = users_collection.count_documents({})
+    total_programs = programs_collection.count_documents({})
+
+    # Kirim data ke template
+    return render_template(
+        'admin.html', 
+        total_users=total_users, 
+        total_programs=total_programs
+    )
 
 # Halaman admin user:
 @app.route('/user')
