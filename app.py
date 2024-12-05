@@ -38,9 +38,6 @@ def admin_required(f):
 # Halaman utama (user dashboard)
 @app.route('/')
 def index():
-    client = MongoClient("mongodb+srv://test:sparta@cluster0.kbfqt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-    db = client['bimble_bbc']
-    programs_collection = db['programs']
     programs = list(programs_collection.find({}))  # Mengambil semua data program
     return render_template('index.html', programs=programs)
 
