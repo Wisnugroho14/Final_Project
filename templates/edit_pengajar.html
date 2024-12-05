@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>BBC Admin - Edit Pengajar</title>
+    <!-- Custom styles -->
+    <link href="{{ url_for('static', filename='sb-admin-2.min.css') }}" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <style>
+        .modal-content input,
+        .modal-content textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+
+        img {
+            width: 100px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">BBC</div>
+            </a>
+            <hr class="sidebar-divider my-0" />
+            <li class="nav-item">
+                <a class="nav-link" href="/admin"> <span>Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user"> <span>Users</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/program-admin"> <span>Program</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/pendaftaran"> <span>Pendaftaran</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/pengajar"> <span>Profil Pengajar</span></a>
+            </li>
+            <hr class="sidebar-divider d-none d-md-block" />
+        </ul>
+
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <!-- Add top navigation content here -->
+                </nav>
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <h1 class="h3 mb-2 text-gray-800">Edit Pengajar</h1>
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="nama">Nama Pengajar</label>
+                            <input type="text" class="form-control" id="nama" name="nama" value="{{ pengajar.nama }}"
+                                required />
+                        </div>
+                        <div class="form-group">
+                            <label for="foto">Foto Pengajar</label>
+                            <input type="file" class="form-control" id="foto" name="foto" />
+                            <img src="{{ url_for('static', filename='' ~ pengajar.foto) }}"
+                                alt="{{ pengajar.nama }}" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; BBC 2024</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='vendor/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap.bundle.min.js') }}"></script>
+</body>
+
+</html>

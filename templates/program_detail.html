@@ -108,7 +108,7 @@
                 <h1>{{ program.title }}</h1>
                 <p>{{ program.description }}</p>
                 <div class="mt-2">
-                    <a href="#" class="btn btn-daftar">Daftar Sekarang</a>
+                    <a href="{{ url_for('login') if not session.get('logged_in') else url_for('form') }}" class="btn btn-daftar">Daftar Sekarang</a>
                 </div>
             </div>
         </section>

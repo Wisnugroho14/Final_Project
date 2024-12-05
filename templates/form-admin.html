@@ -89,18 +89,14 @@
         </li>
 
         <!-- Nav Item - Tables -->
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="/user"> <span>Users</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/program-admin"> <span>Program</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="/form-admin"> <span>Pendaftaran</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="pengajar">
-              <span>Profil Pengajar</span></a>
         </li>
 
         <!-- Divider -->
@@ -165,12 +161,12 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Users Table</h1>
+            <h1 class="h3 mb-2 text-gray-800">Pendaftaran Table</h1>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Users</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Pendaftaran</h6>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -183,29 +179,32 @@
                     <thead>
                       <tr>
                         <th>No</th>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>Role</th>
+                        <th>Nama Siswa</th>
+                        <th>Alamat</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Program</th>
+                        <th>Level</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {% for user in users %}
                       <tr>
-                        <td>{{ loop.index }}</td>
-                        <td>{{ user.username }}</td>
-                        <td>{{ user.password }}</td>
-                        <td>{{ user.role }}</td>
+                        <td>1</td>
+                        <td>Wisnu</td>
+                        <td>Kp. Kelapa Dua. Tugu, Cimanggis Depok</td>
+                        <td>Laki-Laki</td>
+                        <td>English For Children</td>
+                        <td>Prepatory Class 1B</td>
                         <td>
                           <div class="action-buttons d-flex gap-2">
                             <a
-                              href="{{ url_for('view_user', user_id=user._id) }}"
+                              href="#"
                               class="btn btn-warning btn-sm d-flex align-items-center flex-grow-1 justify-content-center"
                             >
                               <i class="fas fa-eye mr-2"></i> View
                             </a>
                             <form
-                              action="{{ url_for('delete_user', user_id=user._id) }}"
+                              action="#"
                               method="post"
                               onsubmit="return confirm('Are you sure?')"
                               style="margin: 0; flex-grow: 1;"
@@ -220,7 +219,6 @@
                           </div>
                         </td>
                       </tr>
-                      {% endfor %}
                     </tbody>
                   </table>
                 </div>

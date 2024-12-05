@@ -28,6 +28,16 @@
     <div class="container-fluid">
       <form method="post" action="{{ url_for('login') }}" class="login mx-auto">
         <h4 class="text-center">Masuk Akun</h4>
+        {% with messages = get_flashed_messages() %} {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}
 
         <!-- Input Username -->
         <div class="form-floating mb-4 mt-4">
