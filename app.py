@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+import os
+from werkzeug.utils import secure_filename
 import bcrypt
 import os
 from werkzeug.utils import secure_filename
@@ -21,10 +23,18 @@ client = MongoClient("mongodb+srv://test:sparta@cluster0.kbfqt.mongodb.net/?retr
 db = client['bimble_bbc']  # Replace with your MongoDB database name
 users_collection = db['users']
 programs_collection = db['programs']
+
+pendaftaran_collection = db['pendaftaran']
 pengajar_collection = db['pengajar']
+
 
 # Set a secret key for sessions
 app.secret_key = 'bbc_pati'
+
+# Direktori untuk menyimpan file upload
+UPLOAD_FOLDER = 'Static/uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Kode verifikasi admin
 ADMIN_VERIFICATION_CODE = '778899'  # Ganti dengan kode rahasia yang aman
@@ -69,6 +79,45 @@ def about():
 def form():
     flash("Silakan isi formulir untuk mendaftar.", "info")
     return render_template("form.html")
+
+@app.route('/submit-form', methods=['POST'])
+def submit_form():
+    # Ambil data dari form
+    complitename = request.form.get('complitename')
+    address = request.form.get('address')
+    gender = request.form.get('gender')
+    parents = request.form.get('parents')
+    program = request.form.get('program')
+    phone = request.form.get('phone')
+    level = request.form.get('level')
+    payment_proof = request.files.get('paymentProof')
+
+    # Simpan bukti pembayaran ke server
+    if payment_proof:
+        filename = secure_filename(payment_proof.filename)
+        payment_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        payment_proof.save(payment_path)
+    else:
+        payment_path = None
+
+    # Simpan data ke MongoDB
+    data = {
+        "complitename": complitename,
+        "address": address,
+        "gender": gender,
+        "parents": parents,
+        "program": program,
+        "phone": phone,
+        "level": level,
+        "payment_proof": payment_path
+    }
+    pendaftaran_collection.insert_one(data)
+
+    # Kirim pesan keberhasilan menggunakan flash
+    flash('Formulir berhasil terkirim!')
+
+    # Redirect ke halaman indeks
+    return redirect(url_for('index'))
 
 # Halaman Contact:    
 @app.route('/contact')
