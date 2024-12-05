@@ -189,12 +189,14 @@ def admin():
     # Hitung jumlah pengguna dan program
     total_users = users_collection.count_documents({})
     total_programs = programs_collection.count_documents({})
+    total_pendaftar = pendaftaran_collection.count_documents({})
 
     # Kirim data ke template
     return render_template(
         'admin.html', 
         total_users=total_users, 
-        total_programs=total_programs
+        total_programs=total_programs,
+        total_pendaftar=total_pendaftar,
     )
 
 # Halaman admin user:
@@ -538,8 +540,11 @@ def view_pengajar(pengajar_id):
 
 # Tampilan admin menu pendaftaran:
 @app.route('/form-admin')
-def registrasi():
-    return render_template('form-admin.html')
+@login_required
+@admin_required
+def form_admin():
+    pendaftaran = list(pendaftaran_collection.find())  # Ambil semua data dari koleksi pendaftaran
+    return render_template('form-admin.html', pendaftaran=pendaftaran)
 
 
 if __name__ == '__main__':
