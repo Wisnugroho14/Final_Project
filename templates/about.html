@@ -283,15 +283,13 @@
                 <h2 class="mb-5">Tenaga Pengajar</h2>
                 <div class="container mt-4">
                     <div class="row justify-content-center">
-                        <div class="row">
-                            {% for pengajar in pengajar %}
-                            <div class="col-6 col-md-3 {% if loop.index > programs|length - 2 %}mx-auto{% endif %} text-center">
-                                <img src="{{ url_for('static', filename='' + pengajar['foto']) }}" alt="Foto Pengajar"
-                                    class="circle-image">
-                                <p class="mt-2">{{ pengajar.nama }}</p>
-                            </div>
-                            {% endfor %}
+                        {% for pengajar in pengajar %}
+                        <div class="col-6 col-md-3 text-center">
+                            <img src="{{ url_for('static', filename='' + pengajar['foto']) }}" alt="Foto Pengajar"
+                                class="circle-image">
+                            <p class="mt-2">{{ pengajar.nama }}</p>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
