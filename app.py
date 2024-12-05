@@ -38,9 +38,6 @@ def admin_required(f):
 # Halaman utama (user dashboard)
 @app.route('/')
 def index():
-    client = MongoClient("mongodb+srv://test:sparta@cluster0.kbfqt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-    db = client['bimble_bbc']
-    programs_collection = db['programs']
     programs = list(programs_collection.find({}))  # Mengambil semua data program
     return render_template('index.html', programs=programs)
 
@@ -370,6 +367,11 @@ def delete_user(user_id):
         users_collection.delete_one({"_id": ObjectId(user_id)})
         flash('Pengguna berhasil dihapus.', 'success')
     return redirect(url_for('user'))
+
+# Tampilan admin menu pendaftaran:
+@app.route('/form-admin')
+def registrasi():
+    return render_template('form-admin.html')
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
