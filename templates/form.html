@@ -1,105 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formulir Pendaftaran</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.js"
-      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
-    />   
 
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulir Pendaftaran</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
+</head>
+
 <body class="formulir">
-    <!-- NAVBAR -->
-    <header>
-      <nav class="navbar navbar-expand-lg py-2">
-        <div class="container">
-          <a class="navbar-brand" href="#">
-            <img
-              src="{{ url_for('static', filename='img/logo_bbc.png') }}"
-              alt="Logo"
-              width="75"
-            />
-          </a>
-          <button
-            class="navbar-toggler custom-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="/">Beranda</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/about">Tentang Kami</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Program
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a class="dropdown-item" href="#">English for Children</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">English for Teens</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">English for Adult</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">English Private Class</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#"
-                      >TOEFL/TOEIC Preparation</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/contact">Kontak</a>
-              </li>
-            </ul>
-            <!-- Buttons (Masuk and Daftar) -->
-            {% if session['logged_in'] %}
-            <div id="logout-animation" class="hidden">
-                <button onclick="location.href='/logout'" class="btn btn-outline-light me-2">Logout</button>
-            </div>
-            {% else %}
-            <button onclick="location.href='/login'" class="btn btn-outline-light me-2">Masuk</button>
-            <button onclick="location.href='/register'" class="btn btn-signup">Daftar</button>
-            {% endif %}
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar navbar-expand-lg py-2">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="{{ url_for('static', filename='img/logo_bbc.png') }}" alt="Logo" width="75" />
+        </a>
+        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">Tentang Kami</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" href="/program" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Program
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" href="/program/children">English for Children</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/program/teens">English for Teens</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/program/adult">English for Adult</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/program/private">English Private Class</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/program/toefl">TOEFL/TOEIC Preparation</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Kontak</a>
+            </li>
+          </ul>
+          <!-- Buttons (Masuk and Daftar) -->
+          {% if session['logged_in'] %}
+          <div id="logout-animation" class="hidden">
+            <button onclick="location.href='/logout'" class="btn btn-outline-light me-2">Logout</button>
           </div>
+          {% else %}
+          <button onclick="location.href='/login'" class="btn btn-outline-light me-2">Masuk</button>
+          <button onclick="location.href='/register'" class="btn btn-signup">Daftar</button>
+          {% endif %}
         </div>
-      </nav>
-    </header>
-    <!-- NAVBAR END -->
+      </div>
+    </nav>
+  </header>
+  <!-- NAVBAR END -->
 
-<!-- FORM START -->
+  <!-- FORM START -->
   <div class="container my-5 mb-2">
     <h2 class="text-center text-white mt-2">FORMULIR PENDAFTARAN</h2>
 
@@ -126,7 +102,7 @@
               <option value="laki-laki">Laki-laki</option>
               <option value="perempuan">Perempuan</option>
             </select>
-          </div>          
+          </div>
           <div class="col-md-6">
             <label for="parents" class="form-label">Nama Orang Tua</label>
             <input type="text" class="form-register" id="parents" placeholder="Masukkan Nama" required>
@@ -137,7 +113,8 @@
         <div class="row mb-3">
           <div class="col-md-6">
             <label for="program" class="form-label">Program yang dipilih</label>
-            <select class="form-register mb-3" id="program" aria-label="Default select example" onchange="updateLevelOptions(); updateDescription()" required>
+            <select class="form-register mb-3" id="program" aria-label="Default select example"
+              onchange="updateLevelOptions(); updateDescription()" required>
               <option selected value="">Pilih Program</option>
               <option value="children">English for Children</option>
               <option value="teens">English for Teens</option>
@@ -156,7 +133,8 @@
         <div class="row mb-3">
           <div class="col-md-6">
             <label for="level" class="form-label">Pilih Level</label>
-            <select class="form-register mb-3" id="level" aria-label="Default select level" onchange="updateDescription()" required>
+            <select class="form-register mb-3" id="level" aria-label="Default select level"
+              onchange="updateDescription()" required>
               <option selected value="">Pilih Level</option>
               <!-- Opsi level akan diperbarui berdasarkan program -->
             </select>
@@ -166,13 +144,13 @@
             <input type="file" class="form-register" id="paymentProof" required>
           </div>
         </div>
-          <!-- Tempat untuk deskripsi -->
-          <div id="description" class="mt-3" style="display: none;">
-            <h4>Program yang diambil</h4>
-            <p id="selectedProgram">Program: -</p>
-            <p id="selectedLevel">Level: -</p>
-            <p id="selectedPrice">Biaya: -</p>
-          </div>
+        <!-- Tempat untuk deskripsi -->
+        <div id="description" class="mt-3" style="display: none;">
+          <h4>Program yang diambil</h4>
+          <p id="selectedProgram">Program: -</p>
+          <p id="selectedLevel">Level: -</p>
+          <p id="selectedPrice">Biaya: -</p>
+        </div>
 
         <div class="d-flex justify-content-end mt-4">
           <button type="button" class="btn btn-danger me-2" onclick="location.href='/program'">Batal</button>
@@ -181,190 +159,192 @@
       </div>
     </div>
   </div>
-<!-- FORM END -->
+  <!-- FORM END -->
 
 
-<!-- PAYMENT -->
-<div class="container-bank py-4">
-  <div class="row justify-content-center">
-    <div class="col-md-6 p-4 rounded shadow bg-white">
-      <div class="row text-center">
-        <!-- Card Bank BRI -->
-        <div class="col-md-4">
-          <div class="card border-0 shadow-sm">
-            <div class="card-body">
-              <img src="{{ url_for('static', filename='icon/BRI.png') }}" alt="Bank BRI" class="img-fluid mb-3" style="max-width: 80px;">
-              <h5 class="card-title">BANK BRI</h5>
-              <p class="card-text">1111-11111-1111</p>
+  <!-- PAYMENT -->
+  <div class="container-bank py-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6 p-4 rounded shadow bg-white">
+        <div class="row text-center">
+          <!-- Card Bank BRI -->
+          <div class="col-md-4">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body">
+                <img src="{{ url_for('static', filename='icon/BRI.png') }}" alt="Bank BRI" class="img-fluid mb-3"
+                  style="max-width: 80px;">
+                <h5 class="card-title">BANK BRI</h5>
+                <p class="card-text">1111-11111-1111</p>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- Card Bank BNI -->
-        <div class="col-md-4">
-          <div class="card border-0 shadow-sm">
-            <div class="card-body">
-              <img src="{{ url_for('static', filename='icon/BNI.png') }}" alt="Bank BNI" class="img-fluid mb-3" style="max-width: 80px;">
-              <h5 class="card-title">BNI</h5>
-              <p class="card-text">2222-222-2222</p>
+          <!-- Card Bank BNI -->
+          <div class="col-md-4">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body">
+                <img src="{{ url_for('static', filename='icon/BNI.png') }}" alt="Bank BNI" class="img-fluid mb-3"
+                  style="max-width: 80px;">
+                <h5 class="card-title">BNI</h5>
+                <p class="card-text">2222-222-2222</p>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- Card Bank BCA -->
-        <div class="col-md-4">
-          <div class="card border-0 shadow-sm">
-            <div class="card-body">
-              <img src="{{ url_for('static', filename='icon/BCA.png') }}" alt="Bank BCA" class="img-fluid mb-3" style="max-width: 80px;">
-              <h5 class="card-title">BCA</h5>
-              <p class="card-text">3333-3333-333</p>
+          <!-- Card Bank BCA -->
+          <div class="col-md-4">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body">
+                <img src="{{ url_for('static', filename='icon/BCA.png') }}" alt="Bank BCA" class="img-fluid mb-3"
+                  style="max-width: 80px;">
+                <h5 class="card-title">BCA</h5>
+                <p class="card-text">3333-3333-333</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- END PAYMENT -->
-
+  <!-- END PAYMENT -->
 
 
 
-    <!-- FOOTER -->
-    <footer class="text-white text-center py-3">
-      <p>
-        Copyright &copy; 2024 Kursus Bahasa Inggris | Powered by Kursus Bahasa
-        Inggris
-      </p>
-    </footer>
+
+  <!-- FOOTER -->
+  <footer class="text-white text-center py-3">
+    <p>
+      Copyright &copy; 2024 Kursus Bahasa Inggris | Powered by Kursus Bahasa
+      Inggris
+    </p>
+  </footer>
 
 
-    <script>
-// VALIADSI BUTTON SUPAYA TIDAK BISA DI KLIK KALAU KOSONG
+  <script>
+    // VALIADSI BUTTON SUPAYA TIDAK BISA DI KLIK KALAU KOSONG
 
-      const form = document.getElementById('registrationForm');
-      const submitBtn = document.getElementById('submitBtn');
+    const form = document.getElementById('registrationForm');
+    const submitBtn = document.getElementById('submitBtn');
 
-      // Validasi form
-      form.addEventListener('input', () => {
-        const allFieldsFilled = Array.from(form.querySelectorAll('.form-register')).every((input) => {
-          if (input.type === 'file') {
-            return input.files.length > 0;
-          }
-          return input.value.trim() !== '';
-        });
-
-        submitBtn.disabled = !allFieldsFilled;
+    // Validasi form
+    form.addEventListener('input', () => {
+      const allFieldsFilled = Array.from(form.querySelectorAll('.form-register')).every((input) => {
+        if (input.type === 'file') {
+          return input.files.length > 0;
+        }
+        return input.value.trim() !== '';
       });
 
-      // Fungsi untuk pengiriman data (simulasi)
-      function submitForm() {
-        if (!submitBtn.disabled) {
-          alert('Formulir berhasil dikirim!');
-        }
+      submitBtn.disabled = !allFieldsFilled;
+    });
+
+    // Fungsi untuk pengiriman data (simulasi)
+    function submitForm() {
+      if (!submitBtn.disabled) {
+        alert('Formulir berhasil dikirim!');
+      }
+    }
+
+    // END VALIDASI BUTTON
+
+
+
+    // DESKRIPSI PROGRAM YANG DI PILIH
+    const levelData = {
+      children: [
+        { text: "Kindergarden 1-2 / 4 bulan ", value: "kindergarden", price: 550000 },
+        { text: "Prepatory Class 1A-6B / 4 bulan ", value: "prepatory", price: 550000 },
+        { text: "Dynamic Conversation for Children / 3 bulan ", value: "conversation_children", price: 550000 },
+      ],
+      teens: [
+        { text: "Pre Beginner 1 / 3 bulan ", value: "pre_beginner1", price: 460000 },
+        { text: "Pre Beginner 2 / 3 bulan ", value: "pre_beginner2", price: 480000 },
+        { text: "Dynamic Conversation for Teens 1 / 3 bulan ", value: "conversation_teens1", price: 550000 },
+        { text: "Beginner 1 / 3 bulan ", value: "beginner1", price: 460000 },
+        { text: "Beginner 2 / 3 bulan ", value: "beginner2", price: 480000 },
+        { text: "Dynamic Conversation for Teens 2 / 3 bulan ", value: "conversation_teens2", price: 560000 },
+        { text: "Pre Elementary 1 / 3 bulan ", value: "pre_elementary1", price: 470000 },
+        { text: "Pre Elementary 2 / 3 bulan ", value: "pre_elementary2", price: 490000 },
+        { text: "Dynamic Conversation for Teens 3 / 3 bulan ", value: "conversation_teens3", price: 570000 },
+      ],
+      adults: [
+        { text: "Basic 1 / 3 bulan ", value: "basic1", price: 480000 },
+        { text: "Basic 2 / 3 bulan ", value: "basic2", price: 480000 },
+        { text: "Dynamic Conversation for Adult 1 - 3 bulan ", value: "conversation_adult1", price: 600000 },
+        { text: "Elementary 1 / 3 bulan ", value: "elementary1", price: 480000 },
+        { text: "Elementary 2 / 3 bulan ", value: "elementary2", price: 505000 },
+        { text: "Dynamic Conversation for Adult 2 / 3 bulan ", value: "conversation_adult2", price: 610000 },
+        { text: "Intermediate 1 / 3 bulan ", value: "intermediate1", price: 490000 },
+        { text: "Intermediate 2 / 3 bulan ", value: "intermediate2", price: 510000 },
+        { text: "Dynamic Conversation for Adult 3 / 3 bulan ", value: "conversation_adult3", price: 620000 },
+        { text: "Post Intermediate 1 / 3 bulan ", value: "post_intermediate1", price: 490000 },
+        { text: "Post Intermediate 2 / 3 bulan ", value: "post_intermediate2", price: 500000 },
+        { text: "Dynamic Conversation for Adult 4 / 3 bulan ", value: "conversation_adult4", price: 630000 },
+        { text: "Advance 1 / 4 bulan ", value: "advance1", price: 650000 },
+        { text: "Advance 2 / 4 bulan ", value: "advance2", price: 650000 },
+      ],
+      private: [
+        { text: "Private di BBC / 10x90 Pertemuan ", value: "private_bbc", price: 750000 },
+        { text: "Private di Luar / 10x90 Pertemuan ", value: "private_outside", price: 1050000 },
+      ],
+      toefl: [
+        { text: "Test TOEFL/TOEIC/ 2 Hours Pertemuan ", value: "test_toefl", price: 250000 },
+        { text: "Preparation TOEFL / 6x90 Pertemuan ", value: "prep_toefl", price: 650000 },
+        { text: "Preparation IELTS / 10x90 Pertemuan ", value: "prep_ielts", price: 1050000 },
+      ],
+    };
+
+    function updateLevelOptions() {
+      const programSelect = document.getElementById("program");
+      const levelSelect = document.getElementById("level");
+      const selectedProgram = programSelect.value;
+
+      // Reset level options
+      levelSelect.innerHTML = '<option selected value="">Pilih Level</option>';
+
+      // Tambahkan opsi baru
+      if (selectedProgram && levelData[selectedProgram]) {
+        levelData[selectedProgram].forEach((level) => {
+          const option = document.createElement("option");
+          option.value = level.value;
+          option.textContent = level.text;
+          option.dataset.price = level.price;
+          levelSelect.appendChild(option);
+        });
       }
 
-// END VALIDASI BUTTON
+      // Reset deskripsi
+      updateDescription();
+    }
+
+    function updateDescription() {
+      const programSelect = document.getElementById("program");
+      const levelSelect = document.getElementById("level");
+      const descriptionDiv = document.getElementById("description");
 
 
+      const selectedProgram = programSelect.value;
+      const selectedLevel = levelSelect.options[levelSelect.selectedIndex];
 
-// DESKRIPSI PROGRAM YANG DI PILIH
-      const levelData = {
-        children: [
-          { text: "Kindergarden 1-2 / 4 bulan ", value: "kindergarden", price: 550000 },
-          { text: "Prepatory Class 1A-6B / 4 bulan ", value: "prepatory", price: 550000 },
-          { text: "Dynamic Conversation for Children / 3 bulan ", value: "conversation_children", price: 550000 },
-        ],
-        teens: [
-          { text: "Pre Beginner 1 / 3 bulan ", value: "pre_beginner1", price: 460000 },
-          { text: "Pre Beginner 2 / 3 bulan ", value: "pre_beginner2", price: 480000 },
-          { text: "Dynamic Conversation for Teens 1 / 3 bulan ", value: "conversation_teens1", price: 550000 },
-          { text: "Beginner 1 / 3 bulan ", value: "beginner1", price: 460000 },
-          { text: "Beginner 2 / 3 bulan ", value: "beginner2", price: 480000 },
-          { text: "Dynamic Conversation for Teens 2 / 3 bulan ", value: "conversation_teens2", price: 560000 },
-          { text: "Pre Elementary 1 / 3 bulan ", value: "pre_elementary1", price: 470000 },
-          { text: "Pre Elementary 2 / 3 bulan ", value: "pre_elementary2", price: 490000 },
-          { text: "Dynamic Conversation for Teens 3 / 3 bulan ", value: "conversation_teens3", price: 570000 },
-        ],
-        adults: [
-          { text: "Basic 1 / 3 bulan ", value: "basic1", price: 480000 },
-          { text: "Basic 2 / 3 bulan ", value: "basic2", price: 480000 },
-          { text: "Dynamic Conversation for Adult 1 - 3 bulan ", value: "conversation_adult1", price: 600000 },
-          { text: "Elementary 1 / 3 bulan ", value: "elementary1", price: 480000 },
-          { text: "Elementary 2 / 3 bulan ", value: "elementary2", price: 505000 },
-          { text: "Dynamic Conversation for Adult 2 / 3 bulan ", value: "conversation_adult2", price: 610000 },
-          { text: "Intermediate 1 / 3 bulan ", value: "intermediate1", price: 490000 },
-          { text: "Intermediate 2 / 3 bulan ", value: "intermediate2", price: 510000 },
-          { text: "Dynamic Conversation for Adult 3 / 3 bulan ", value: "conversation_adult3", price: 620000 },
-          { text: "Post Intermediate 1 / 3 bulan ", value: "post_intermediate1", price: 490000 },
-          { text: "Post Intermediate 2 / 3 bulan ", value: "post_intermediate2", price: 500000 },
-          { text: "Dynamic Conversation for Adult 4 / 3 bulan ", value: "conversation_adult4", price: 630000 },
-          { text: "Advance 1 / 4 bulan ", value: "advance1", price: 650000 },
-          { text: "Advance 2 / 4 bulan ", value: "advance2", price: 650000 },
-        ],
-        private: [
-          { text: "Private di BBC / 10x90 Pertemuan ", value: "private_bbc", price: 750000 },
-          { text: "Private di Luar / 10x90 Pertemuan ", value: "private_outside", price: 1050000 },
-        ],
-        toefl: [
-          { text: "Test TOEFL/TOEIC/ 2 Hours Pertemuan ", value: "test_toefl", price: 250000 },
-          { text: "Preparation TOEFL / 6x90 Pertemuan ", value: "prep_toefl", price: 650000 },
-          { text: "Preparation IELTS / 10x90 Pertemuan ", value: "prep_ielts", price: 1050000 },
-        ],
-      };
-    
-      function updateLevelOptions() {
-        const programSelect = document.getElementById("program");
-        const levelSelect = document.getElementById("level");
-        const selectedProgram = programSelect.value;
-    
-        // Reset level options
-        levelSelect.innerHTML = '<option selected value="">Pilih Level</option>';
-    
-        // Tambahkan opsi baru
-        if (selectedProgram && levelData[selectedProgram]) {
-          levelData[selectedProgram].forEach((level) => {
-            const option = document.createElement("option");
-            option.value = level.value;
-            option.textContent = level.text;
-            option.dataset.price = level.price;
-            levelSelect.appendChild(option);
-          });
-        }
-    
-        // Reset deskripsi
-        updateDescription();
+      // Jika program dan level belum dipilih
+      if (!selectedProgram || !selectedLevel.value) {
+        descriptionDiv.style.display = "none";
+        return;
       }
-    
-      function updateDescription() {
-        const programSelect = document.getElementById("program");
-        const levelSelect = document.getElementById("level");
-        const descriptionDiv = document.getElementById("description");
-        
-    
-        const selectedProgram = programSelect.value;
-        const selectedLevel = levelSelect.options[levelSelect.selectedIndex];
-    
-        // Jika program dan level belum dipilih
-        if (!selectedProgram || !selectedLevel.value) {
-          descriptionDiv.style.display = "none";
-          return;
-        }
-    
-        // Tampilkan deskripsi
-        document.getElementById("selectedProgram").textContent = `Program: ${programSelect.options[programSelect.selectedIndex].text}`;
-        document.getElementById("selectedLevel").textContent = `Level: ${selectedLevel.text}`;
-        document.getElementById("selectedPrice").textContent = `Biaya: Rp. ${parseInt(selectedLevel.dataset.price).toLocaleString("id-ID")}`;
-        descriptionDiv.style.display = "block";
-      }
-// END DESKRIPSI PROGRAM YANG DI PILIH
 
-    </script>
-    
-    
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+      // Tampilkan deskripsi
+      document.getElementById("selectedProgram").textContent = `Program: ${programSelect.options[programSelect.selectedIndex].text}`;
+      document.getElementById("selectedLevel").textContent = `Level: ${selectedLevel.text}`;
+      document.getElementById("selectedPrice").textContent = `Biaya: Rp. ${parseInt(selectedLevel.dataset.price).toLocaleString("id-ID")}`;
+      descriptionDiv.style.display = "block";
+    }
+    // END DESKRIPSI PROGRAM YANG DI PILIH
+
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

@@ -2,14 +2,27 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import bcrypt
+import os
+from werkzeug.utils import secure_filename
 
+# Inisialisasi Flask
 app = Flask(__name__)
+
+# Konfigurasi folder pengajar
+UPLOAD_FOLDER = 'static/pengajar'
+app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'static', 'pengajar')
+
+# Pastikan folder upload ada
+if not os.path.exists(app.config['UPLOAD_FOLDER']):
+    os.makedirs(app.config['UPLOAD_FOLDER'])
 
 # Koneksi ke MongoDB
 client = MongoClient("mongodb+srv://test:sparta@cluster0.kbfqt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 db = client['bimble_bbc']  # Replace with your MongoDB database name
 users_collection = db['users']
 programs_collection = db['programs']
+pengajar_collection = db['pengajar']
+
 # Set a secret key for sessions
 app.secret_key = 'bbc_pati'
 
@@ -45,7 +58,10 @@ def index():
 # Halaman About:
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    pengajar_collection = db['pengajar'].find()  
+    pengajar = list(pengajar_collection) 
+    
+    return render_template('about.html', pengajar=pengajar)
 
 # Halaman Form:
 @app.route('/form')
@@ -368,10 +384,117 @@ def delete_user(user_id):
         flash('Pengguna berhasil dihapus.', 'success')
     return redirect(url_for('user'))
 
+
+# Halaman admin pengajar:
+@app.route('/upload', methods=['POST'])
+def upload():
+    if 'file' not in request.files:  # Check if file part is in the request
+        return 'No file part', 400  # Return an error response if no file part
+
+    file = request.files['file']  # Get the file from the request
+
+    if file.filename == '':  # Check if a file was selected
+        return 'No selected file', 400  # Return an error if no file was selected
+
+    if file:  # If file is valid, save it
+        filename = secure_filename(file.filename)  # Secure the filename
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))  # Save file to the correct folder
+        return 'File uploaded successfully', 200  # Return success message
+
+@app.route('/pengajar')
+@login_required
+@admin_required
+def pengajar():
+    pengajar = list(pengajar_collection.find())
+    return render_template('pengajar.html', pengajar=pengajar)
+
+@app.route('/pengajar/add', methods=['GET', 'POST'])
+@login_required
+@admin_required
+def add_pengajar():
+    if request.method == 'POST':
+        nama = request.form['nama']
+        file = request.files['foto']
+
+        if file:
+            # Simpan file dengan nama aslinya
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            # Mengubah path menjadi menggunakan '/' alih-alih '\'
+            foto_path = os.path.join('pengajar', filename).replace("\\", "/")
+
+            pengajar_collection.insert_one({
+                'nama': nama,
+                'foto': foto_path
+            })
+            flash('Data pengajar berhasil ditambahkan.', 'success')
+            return redirect(url_for('pengajar'))
+
+@app.route('/pengajar/edit/<pengajar_id>', methods=['GET', 'POST'])
+@login_required
+@admin_required
+def edit_pengajar(pengajar_id):
+    pengajar = pengajar_collection.find_one({'_id': ObjectId(pengajar_id)})
+
+    if not pengajar:
+        flash('Pengajar tidak ditemukan.', 'danger')
+        return redirect(url_for('pengajar'))
+
+    if request.method == 'POST':
+        nama = request.form['nama']
+        file = request.files['foto']
+
+        update_data = {
+            'nama': nama,
+        }
+
+        if file:
+            # Simpan file dengan nama aslinya
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            # Mengubah path menjadi menggunakan '/' alih-alih '\'
+            update_data['foto'] = os.path.join('pengajar', filename).replace("\\", "/")
+
+        pengajar_collection.update_one(
+            {'_id': ObjectId(pengajar_id)},
+            {'$set': update_data}
+        )
+        flash('Data pengajar berhasil diperbarui.', 'success')
+        return redirect(url_for('pengajar'))
+
+    return render_template('edit_pengajar.html', pengajar=pengajar)
+
+@app.route('/pengajar/delete/<pengajar_id>', methods=['POST'])
+@login_required
+@admin_required
+def delete_pengajar(pengajar_id):
+    pengajar = pengajar_collection.find_one({'_id': ObjectId(pengajar_id)})
+
+    if pengajar:
+        pengajar_collection.delete_one({'_id': ObjectId(pengajar_id)})
+        flash('Pengajar berhasil dihapus.', 'success')
+    else:
+        flash('Pengajar tidak ditemukan.', 'danger')
+
+    return redirect(url_for('pengajar'))
+
+@app.route('/pengajar/view/<pengajar_id>', methods=['GET'])
+@login_required
+@admin_required
+def view_pengajar(pengajar_id):
+    pengajar = pengajar_collection.find_one({'_id': ObjectId(pengajar_id)})
+
+    if not pengajar:
+        flash('Program tidak ditemukan.', 'danger')
+        return redirect(url_for('pengajar'))
+
+    return render_template('view_pengajar.html', pengajar=pengajar)
+
 # Tampilan admin menu pendaftaran:
 @app.route('/form-admin')
 def registrasi():
     return render_template('form-admin.html')
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
