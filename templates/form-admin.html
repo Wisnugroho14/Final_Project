@@ -52,12 +52,12 @@
         width: 100%; /* Menjaga tombol memiliki lebar penuh */
       }
 
-    @media (max-width: 768px) {
-      .action-buttons {
-        flex-direction: column; /* Tombol ditumpuk secara vertikal di layar kecil */
-        gap: 5px; /* Jarak antar tombol lebih kecil di layar kecil */
+      @media (max-width: 768px) {
+        .action-buttons {
+          flex-direction: column; /* Tombol ditumpuk secara vertikal di layar kecil */
+          gap: 5px; /* Jarak antar tombol lebih kecil di layar kecil */
+        }
       }
-    }
     </style>
   </head>
 
@@ -182,22 +182,27 @@
                     <thead>
                       <tr>
                         <th>No</th>
-                        <th>Nama Siswa</th>
+                        <th>Nama Lengkap</th>
                         <th>Alamat</th>
                         <th>Jenis Kelamin</th>
+                        <th>Orang Tua</th>
                         <th>Program</th>
                         <th>Level</th>
-                        <th>Action</th>
+                        <th>No Telepon</th>
+                        <th>Bukti Pembayaran</th>
                       </tr>
                     </thead>
                     <tbody>
+                      {% for data in pendaftaran %}
                       <tr>
-                        <td>1</td>
-                        <td>Wisnu</td>
-                        <td>Kp. Kelapa Dua. Tugu, Cimanggis Depok</td>
-                        <td>Laki-Laki</td>
-                        <td>English For Children</td>
-                        <td>Prepatory Class 1B</td>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ data.complitename }}</td>
+                        <td>{{ data.address }}</td>
+                        <td>{{ data.gender }}</td>
+                        <td>{{ data.parents }}</td>
+                        <td>{{ data.program }}</td>
+                        <td>{{ data.level }}</td>
+                        <td>{{ data.phone }}</td>
                         <td>
                           <div class="action-buttons d-flex gap-2">
                             <a
@@ -210,7 +215,7 @@
                               action="#"
                               method="post"
                               onsubmit="return confirm('Are you sure?')"
-                              style="margin: 0; flex-grow: 1;"
+                              style="margin: 0; flex-grow: 1"
                             >
                               <button
                                 type="submit"
@@ -222,6 +227,7 @@
                           </div>
                         </td>
                       </tr>
+                      {% endfor %}
                     </tbody>
                   </table>
                 </div>
