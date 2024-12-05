@@ -113,9 +113,6 @@ def submit_form():
     }
     pendaftaran_collection.insert_one(data)
 
-    # Kirim pesan keberhasilan menggunakan flash
-    flash('Formulir berhasil terkirim!')
-
     # Redirect ke halaman indeks
     return redirect(url_for('index'))
 
