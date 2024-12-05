@@ -17,7 +17,7 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
 
 # Koneksi ke MongoDB
-client = MongoClient("mongodb+srv://test:sparta@cluster0.1et8z.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+client = MongoClient("mongodb+srv://test:sparta@cluster0.kbfqt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 db = client['bimble_bbc']  # Replace with your MongoDB database name
 users_collection = db['users']
 programs_collection = db['programs']

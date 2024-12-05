@@ -285,7 +285,7 @@
                     <div class="row justify-content-center">
                         <div class="row">
                             {% for pengajar in pengajar %}
-                            <div class="col-6 col-md-3 text-center">
+                            <div class="col-6 col-md-3 {% if loop.index > programs|length - 2 %}mx-auto{% endif %} text-center">
                                 <img src="{{ url_for('static', filename='' + pengajar['foto']) }}" alt="Foto Pengajar"
                                     class="circle-image">
                                 <p class="mt-2">{{ pengajar.nama }}</p>
