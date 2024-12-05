@@ -14,7 +14,7 @@
       display: flex;
       gap: 10px;
       justify-content: center;
-      
+
     }
 
     table th,
@@ -55,13 +55,13 @@
       <li class="nav-item">
         <a class="nav-link" href="/user"> <span>Users</span></a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="/program-admin"> <span>Program</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/pendaftaran"> <span>Pendaftaran</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="/pengajar"> <span>Profil Pengajar</span></a>
       </li>
       <hr class="sidebar-divider d-none d-md-block" />
@@ -91,59 +91,54 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-          <h1 class="h3 mb-2 text-gray-800">Programs Table</h1>
+          <h1 class="h3 mb-2 text-gray-800">Profil Pengajar</h1>
           <div class="mb-3">
             <button class="btn btn-primary" data-toggle="modal" data-target="#addProgramModal">
-              <i class="fas fa-plus"></i> Add Program
+              <i class="fas fa-plus"></i> Add Pengajar
             </button>
           </div>
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Programs</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Tenaga Pengajar</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Kategori Program</th>
-                      <th>Level</th>
-                      <th>Harga</th>
-                      <th>Jadwal</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for program in programs %}
-                    <tr>
-                      <td>{{ loop.index }}</td>
-                      <td>{{ program.kategori }}</td>
-                      <td>{{ program.level }}</td>
-                      <td>{{ program.harga }}</td>
-                      <td>{{ program.jadwal }}</td>
-                      <td>
-                        <div class="action-buttons">
-                          <a href="{{ url_for('edit_program', program_id=program['_id']) }}"
-                            class="btn btn-primary btn-sm">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Foto</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for pengajar in pengajar %}
+                      <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ pengajar.nama }}</td>
+                        <td><img src="{{ url_for('static', filename='img/' ~ pengajar.foto) }}"
+                          alt="{{ pengajar.nama }}" width="50"></td>
+                        <td>
+                          <a href="{{ url_for('edit_pengajar', pengajar_id=pengajar._id) }}" class="btn btn-primary btn-sm">
                             <i class="fas fa-edit"></i> Edit
                           </a>
-                          <a href="{{ url_for('view_program', program_id=program['_id']) }}" class="btn btn-warning btn-sm">
+                          <a href="{{ url_for('view_pengajar', pengajar_id=pengajar._id) }}" class="btn btn-warning btn-sm">
                             <i class="fas fa-eye"></i> View
                           </a>
-                          <form action="{{ url_for('delete_program', program_id=program['_id']) }}" method="POST"
+                          <form action="{{ url_for('delete_pengajar', pengajar_id=pengajar._id) }}" method="POST"
                             style="display:inline;">
                             <button class="btn btn-danger btn-sm" type="submit"
                               onclick="return confirm('Apakah Anda yakin ingin menghapus program ini?');">
                               <i class="fas fa-trash"></i> Delete
                             </button>
                           </form>
-                        </div>
-                      </td>
-
-                    </tr>
-                    {% endfor %}
-                  </tbody>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
                 </table>
               </div>
             </div>
@@ -162,18 +157,15 @@
   </div>
 
   <!-- Modals -->
-  <!-- Add Program Modal -->
-  <!-- Add Program Modal -->
+  <!-- Add Pengajar Modal -->
   <div class="modal fade" id="addProgramModal" tabindex="-1" role="dialog" aria-labelledby="addProgramModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <form method="POST" action="/program-admin/add">
+        <form action="/pengajar/add" method="POST" enctype="multipart/form-data">
           <div class="modal-body">
-            <input type="text" name="kategori" placeholder="Kategori Program" required />
-            <textarea name="level" placeholder="Level" rows="4" required></textarea>
-            <input type="text" name="harga" placeholder="Harga" required />
-            <input type="text" name="jadwal" placeholder="Jadwal" required />
+            <input type="file" id="foto" name="foto" required>
+            <input type="text" name="nama" placeholder="Nama" required />
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

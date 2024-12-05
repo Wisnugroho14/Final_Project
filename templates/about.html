@@ -66,7 +66,8 @@
                 <h1>Build Better Communication</h1>
                 <p>Belajar Bahasa Inggris Jadi Lebih Mudah!</p>
                 <div class="mt-4">
-                    <a href="{{ url_for('login') if not session.get('logged_in') else url_for('form') }}" class="btn btn-daftar">Daftar Sekarang</a>
+                    <a href="{{ url_for('login') if not session.get('logged_in') else url_for('form') }}"
+                        class="btn btn-daftar">Daftar Sekarang</a>
                 </div>
             </div>
         </section>
@@ -282,25 +283,14 @@
                 <h2 class="mb-5">Tenaga Pengajar</h2>
                 <div class="container mt-4">
                     <div class="row justify-content-center">
-                        <div class="col-6 col-md-3 text-center">
-                            <img src="{{ url_for('static', filename='img/image-1.png') }}" alt="Pengajar 1"
-                                class="circle-image">
-                            <p class="mt-2">Lorem Ipsum</p>
-                        </div>
-                        <div class="col-6 col-md-3 text-center">
-                            <img src="{{ url_for('static', filename='img/image-1.png') }}" alt="Pengajar 2"
-                                class="circle-image">
-                            <p class="mt-2">Lorem Ipsum</p>
-                        </div>
-                        <div class="col-6 col-md-3 text-center">
-                            <img src="{{ url_for('static', filename='img/image-1.png') }}" alt="Pengajar 3"
-                                class="circle-image">
-                            <p class="mt-2">Lorem Ipsum</p>
-                        </div>
-                        <div class="col-6 col-md-3 text-center">
-                            <img src="{{ url_for('static', filename='img/image-1.png') }}" alt="Pengajar 4"
-                                class="circle-image">
-                            <p class="mt-2">Lorem Ipsum</p>
+                        <div class="row">
+                            {% for pengajar in pengajar %}
+                            <div class="col-6 col-md-3 text-center">
+                                <img src="{{ url_for('static', filename='' + pengajar['foto']) }}" alt="Foto Pengajar"
+                                    class="circle-image">
+                                <p class="mt-2">{{ pengajar.nama }}</p>
+                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
