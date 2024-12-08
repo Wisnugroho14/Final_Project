@@ -89,14 +89,23 @@
                 </ul>
     
                 <!-- Buttons (Masuk and Daftar) -->
-                {% if session['logged_in'] %}
-                <div id="logout-animation" class="hidden">
-                  <button onclick="location.href='/logout'" class="btn btn-outline-light me-2">Logout</button>
-                </div>
+                <ul class="navbar-nav fw-bold">
+                  {% if session.get('logged_in') %}
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Hello, {{ session.get('username') }}
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
+                      </ul>
+                  </li>
+                </ul>
                 {% else %}
-                <button onclick="location.href='/login'" class="btn btn-outline-light me-2">Masuk</button>
-                <button onclick="location.href='/register'" class="btn btn-signup">Daftar</button>
+                <div>
+                  <button onclick="location.href='/login'" class="btn btn-outline-light me-2">Masuk</button>
+                  <button onclick="location.href='/register'" class="btn btn-signup">Daftar</button>
                 {% endif %}
+                </div>
               </div>
             </div>
           </nav>
