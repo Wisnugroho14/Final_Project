@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash,jsonify, session
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
@@ -23,16 +23,16 @@ client = MongoClient("mongodb+srv://test:sparta@cluster0.kbfqt.mongodb.net/?retr
 db = client['bimble_bbc']  # Replace with your MongoDB database name
 users_collection = db['users']
 programs_collection = db['programs']
-
 pendaftaran_collection = db['pendaftaran']
 pengajar_collection = db['pengajar']
+pesan_collection = db['pesan']
 
 
 # Set a secret key for sessions
 app.secret_key = 'bbc_pati'
 
 # Direktori untuk menyimpan file upload
-UPLOAD_FOLDER = 'Static/uploads'
+UPLOAD_FOLDER = 'static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -98,9 +98,9 @@ def submit_form():
         payment_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         payment_proof.save(payment_path)
     else:
-        payment_path = None
+        filename = None
 
-    # Simpan data ke MongoDB
+    # Simpan hanya nama file
     data = {
         "complitename": complitename,
         "address": address,
@@ -109,7 +109,7 @@ def submit_form():
         "program": program,
         "phone": phone,
         "level": level,
-        "payment_proof": payment_path
+        "payment_proof": filename  # Simpan nama file saja
     }
     pendaftaran_collection.insert_one(data)
 
@@ -120,6 +120,24 @@ def submit_form():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+#Input pesan kontak
+@app.route('/kirim_pesan', methods=['POST'])
+def kirim_pesan():
+    data = request.json  # Ambil data JSON dari permintaan
+    print(data)  # Debug: Cetak data yang diterima
+
+    nama = data.get('nama')
+    no_Hp = data.get('no_Hp')
+    pesan = data.get('pesan')
+
+    if not nama or not no_Hp or not pesan:
+        return jsonify({'error': 'Semua kolom harus diisi !'}), 400
+
+    # Simpan data ke koleksi "pesan"
+    pesan_collection.insert_one({'nama': nama, 'no_Hp': no_Hp, 'pesan': pesan})
+    return jsonify({'success': 'Pesan berhasil terkirim'}), 200
+
 
 # Halaman login
 @app.route('/login', methods=['GET', 'POST'])
@@ -545,6 +563,28 @@ def view_pengajar(pengajar_id):
 def form_admin():
     pendaftaran = list(pendaftaran_collection.find())  # Ambil semua data dari koleksi pendaftaran
     return render_template('form-admin.html', pendaftaran=pendaftaran)
+
+# View formulir admin
+@app.route('/form-admin/view/<data_id>', methods=['GET'])
+@login_required
+@admin_required
+def view_form(data_id):
+    pendaftaran = pendaftaran_collection.find_one({'_id': ObjectId(data_id)})
+
+    if not pendaftaran:
+        flash('Formulir tidak ditemukan.', 'danger')
+        return redirect(url_for('form_admin'))
+
+    return render_template('view_form.html', pendaftaran=pendaftaran)
+
+# Delete Formulir admin
+@app.route('/form-admin/delete/<data_id>', methods=['POST'])
+@login_required
+@admin_required
+def delete_form(data_id):
+    db.pendaftaran.delete_one({'_id': ObjectId(data_id)})
+    flash('Formulir berhasil dihapus.', 'success')
+    return redirect(url_for('form_admin'))
 
 
 if __name__ == '__main__':

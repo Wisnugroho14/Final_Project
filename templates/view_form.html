@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>BBC Admin - View Program</title>
+  <link href="{{ url_for('static', filename='sb-admin-2.min.css') }}" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-book-open"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">BBC</div>
+      </a>
+      <hr class="sidebar-divider my-0" />
+      <li class="nav-item">
+        <a class="nav-link" href="/admin"> <span>Dashboard</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/user"> <span>Users</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/program-admin"> <span>Program</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/form-admin"> <span>Pendaftaran</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="/pengajar"> <span>Profil Pengajar</span></a>
+      </li>
+      <hr class="sidebar-divider d-none d-md-block" />
+    </ul>
+
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+          <!-- Add top navigation content here -->
+        </nav>
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+                <h1 class="h3 mb-4 text-gray-800">Formulir Details</h1>
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="card-title mb-0">Formulir Pendaftaran</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-4 font-weight-bold">Nama Lengkap</div>
+                            <div class="col-md-8">{{ pendaftaran.complitename }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4 font-weight-bold">Alamat Lengkap</div>
+                            <div class="col-md-8">{{ pendaftaran.address }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4 font-weight-bold">Jenis Kelamin</div>
+                            <div class="col-md-8">{{ pendaftaran.gender }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4 font-weight-bold">Nama Orang Tua</div>
+                            <div class="col-md-8">{{ pendaftaran.parents }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4 font-weight-bold">Program Yang Dipilih</div>
+                            <div class="col-md-8">{{ pendaftaran.program }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4 font-weight-bold">Level Yang Dipilih</div>
+                            <div class="col-md-8">{{ pendaftaran.level }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4 font-weight-bold">Nomor Telepon</div>
+                            <div class="col-md-8">{{ pendaftaran.phone }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4 font-weight-bold">Bukti Pembayaran</div>
+                            <div class="col-md-8">
+                                <img src="{{ url_for('static', filename='uploads/' + pendaftaran.payment_proof) }}" 
+                                    alt="{{ pendaftaran.payment_proof }}" 
+                                    class="img-fluid" 
+                                    width="500px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-right">
+                        <a href="{{ url_for('form_admin') }}" class="btn btn-secondary">Back to Pendaftaran</a>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; BBC 2024</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='vendor/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap.bundle.min.js') }}"></script>
+</body>
+
+</html>
