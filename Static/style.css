@@ -310,7 +310,6 @@ h1 {
   font-size: 2.3rem;
   font-weight: bold;
   color: #d62c2c;
-  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
   margin-bottom: 20px;
 }
 
@@ -340,8 +339,8 @@ h1 {
   padding: 50px 20px;
 }
 
-.contact-section .h1 {
-  color: #d62c2c;
+.contact-section h1 {
+  color: white;
 }
 
 .contact-section .form-floating input,
