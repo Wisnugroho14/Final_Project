@@ -1,6 +1,11 @@
 /* Ini Style Css */
 
 /* Navbar */
+.container {
+  width: 100%; 
+  max-width: 1200px;
+}
+
 .navbar {
   background-color: #001f3f;
 }
@@ -28,22 +33,25 @@
 }
 
 .nav-item.dropdown .dropdown-menu {
-  margin-top: 0; 
+  margin-top: 0;
 }
 
-.nav-item.dropdown:hover > .nav-link {
-  color: #d62c2c; 
+.nav-item.dropdown:hover>.nav-link {
+  color: #d62c2c;
 }
 
 /* Pastikan ikon dropdown berada di sebelah kanan teks */
 .navbar .dropdown-toggle {
   display: flex;
-  align-items: center; /* Menyelaraskan teks dan ikon secara vertikal */
+  align-items: center;
+  /* Menyelaraskan teks dan ikon secara vertikal */
 }
 
 .navbar .dropdown-toggle::after {
-  margin-left: 0.5em; /* Menambahkan jarak antara teks dan ikon */
-  vertical-align: middle; /* Menyelaraskan ikon secara vertikal */
+  margin-left: 0.5em;
+  /* Menambahkan jarak antara teks dan ikon */
+  vertical-align: middle;
+  /* Menyelaraskan ikon secara vertikal */
 }
 
 .btn-signup {
@@ -136,7 +144,23 @@
 
 /* End */
 
+.featurette-heading {
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: #d62c2c;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
+  margin-bottom: 20px;
+}
+
 /* Harga Program */
+.content-beranda {
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: #d62c2c;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
+  margin-bottom: 20px;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -231,19 +255,17 @@ ul li {
 
 /* End */
 
-/* Accordion Styling */
+/* Styling Accordion */
 .custom-accordion .accordion-item {
   margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border: none;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .custom-accordion .accordion-header {
-  background-color: #007bff;
-  /* Warna biru */
-  color: white;
+  background-color: #0056b3;
 }
 
 .custom-accordion .accordion-button {
@@ -251,40 +273,45 @@ ul li {
   color: white;
   font-weight: bold;
   padding: 1rem;
+  border: none;
 }
 
 .custom-accordion .accordion-button:hover {
   background-color: #0056b3;
-  /* Biru gelap */
+  color: #ffffff;
 }
 
-.custom-accordion .accordion-button:not(.collapsed) {
-  color: #fff;
+.custom-accordion .accordion-button.collapsed {
   background-color: #0056b3;
+  color: white;
 }
 
 .custom-accordion .accordion-body {
-  background-color: #f8f9fa;
-  color: #343a40;
-  font-size: 0.95rem;
-  padding: 1rem;
+  background-color: #f1f1f1;
+  color: #333;
+  padding: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  border-top: 1px solid #ddd;
 }
 
-/* Transition Effects */
-.accordion-button,
-.accordion-collapse {
-  transition: all 0.3s ease;
+.accordion-button::after {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  margin-left: auto;
+  transition: transform 0.3s ease;
 }
 
-.iframe-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.accordion-button:not(.collapsed)::after {
+  transform: rotate(180deg);
 }
 
-.iframe-container iframe {
-  max-width: 100%;
-  /* Responsif pada perangkat kecil */
+h1 {
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: #d62c2c;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
+  margin-bottom: 20px;
 }
 
 /* Custom Toggler Button */
@@ -311,6 +338,10 @@ ul li {
   background-color: #001f3f;
   color: white;
   padding: 50px 20px;
+}
+
+.contact-section .h1 {
+  color: #d62c2c;
 }
 
 .contact-section .form-floating input,
@@ -372,7 +403,7 @@ ul li {
 }
 
 .contact-item a:hover {
-  color: #4cf3ff;
+  color: #d62c2c;
   /* Warna teks saat hover */
 }
 
@@ -629,7 +660,7 @@ img:hover {
 
 
 
-footer{
+footer {
   background-color: #d62c2c;
 }
 
@@ -680,7 +711,7 @@ footer{
 
 .mekanisme-belajar-section {
   padding: 2rem;
-  background: linear-gradient(135deg, #f8d7da, #ffe0e6);
+  background: linear-gradient(135deg, #c3d7fd, #e0ebff);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -731,7 +762,7 @@ footer{
 .detail-content h2 {
   font-size: 2rem;
   font-weight: bold;
-  color: #007bff;
+  color: #d62c2c;
   text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
   margin-bottom: 20px;
 }
@@ -767,21 +798,27 @@ footer{
   text-align: left;
   padding: 10px 20px;
   border-radius: 8px;
-  background: linear-gradient(45deg, #e74c3c, #ff7f50 ); /* Gradasi merah ke oranye */
-  color: #fff; /* Warna teks putih */
-  border: none; /* Menghilangkan border */
+  background: linear-gradient(45deg, #e74c3c, #ff7f50);
+  /* Gradasi merah ke oranye */
+  color: #fff;
+  /* Warna teks putih */
+  border: none;
+  /* Menghilangkan border */
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Efek bayangan */
 }
 
 .btn-success:hover {
-  background: linear-gradient(45deg, #ff5733, #ffa502); /* Gradasi saat hover */
-  transform: scale(1.05); /* Efek zoom */
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Menambah bayangan */
+  background: linear-gradient(45deg, #ff5733, #ffa502);
+  /* Gradasi saat hover */
+  transform: scale(1.05);
+  /* Efek zoom */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  /* Menambah bayangan */
 }
 
 /* Footer */
 footer {
   background-color: #d62c2c;
 }
-
