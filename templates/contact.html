@@ -94,17 +94,17 @@
             <label for="nama">Nama</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="email" placeholder="Email">
-            <label for="email">Email</label>
+            <input type="text" class="form-control" id="no_Hp" placeholder="Nomor HP">
+            <label for="no_Hp">Nomor HP</label>
           </div>
           <div class="form-floating mb-3">
-            <textarea class="form-control" placeholder="Pesan" id="pesan" style="height: 100px"></textarea>
+            <textarea class="form-control" id="pesan" placeholder="Pesan" style="height: 100px"></textarea>
             <label for="pesan">Pesan</label>
           </div>
           <div class="text-end">
-            <button type="submit">Kirim</button>
+            <button type="button" id="kirim-btn" class="btn btn-primary">Kirim</button>
           </div>
-        </div>
+        </div>        
 
         <!-- Kontak Info -->
         <div class="col-md-6">
@@ -146,6 +146,46 @@
   <footer class=" text-white text-center py-3">
     <p>Copyright &copy; 2024 Kursus Bahasa Inggris | Powered by Kursus Bahasa Inggris</p>
   </footer>
+
+  <script>
+    document.getElementById('kirim-btn').addEventListener('click', async function () {
+    const nama = document.getElementById('nama').value.trim(); // Ambil dan trim nilai
+    const no_Hp = document.getElementById('no_Hp').value.trim(); // Ambil dan trim nilai
+    const pesan = document.getElementById('pesan').value.trim(); // Ambil dan trim nilai
+
+    // Validasi sederhana
+    if (!nama || !no_Hp || !pesan) {
+      alert('Semua kolom harus diisi !');
+      return;
+    }
+
+    try {
+      const response = await fetch('/kirim_pesan', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ nama, no_Hp, pesan }),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        alert(result.success);
+        // Reset form
+        document.getElementById('nama').value = '';
+        document.getElementById('no_Hp').value = '';
+        document.getElementById('pesan').value = '';
+      } else {
+        alert(result.error);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Terjadi kesalahan, coba lagi.');
+    }
+  });
+
+
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
