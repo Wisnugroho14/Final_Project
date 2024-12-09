@@ -586,6 +586,30 @@ def delete_form(data_id):
     flash('Formulir berhasil dihapus.', 'success')
     return redirect(url_for('form_admin'))
 
+# Menu Pesan Masuk Admin 
+@app.route('/pesan-admin')
+@login_required
+@admin_required
+def pesan_admin():
+    # Mengambil semua pesan dari koleksi pesan, urutkan berdasarkan waktu (opsional jika Anda punya field timestamp)
+    pesan = list(pesan_collection.find().sort('_id', -1))  # Sort descending by ID
+    return render_template('pesan_admin.html', pesan=pesan)
+
+@app.route('/pesan-admin/delete/<pesan_id>', methods=['POST'])
+@login_required
+@admin_required
+def delete_pesan(pesan_id):
+    # Mencari pesan berdasarkan ID
+    pesan = pesan_collection.find_one({'_id': ObjectId(pesan_id)})
+
+    if pesan:
+        # Menghapus pesan jika ditemukan
+        pesan_collection.delete_one({'_id': ObjectId(pesan_id)})
+        flash('Pesan berhasil dihapus.', 'success')
+    else:
+        flash('Pesan tidak ditemukan.', 'danger')
+
+    return redirect(url_for('pesan_admin'))
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)

@@ -17,7 +17,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     <style>
-    /* Styling container */
+        /* Styling container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -101,7 +101,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/user">
                     <i class="fas fa-users"></i>
-                    <span>Users</span>
+                    <span>Pengguna</span>
                 </a>
             </li>
 
@@ -126,6 +126,14 @@
                 <a class="nav-link" href="pengajar">
                     <i class="fas fa-user-tie"></i>
                     <span>Profil Pengajar</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Pesan Masuk -->
+            <li class="nav-item">
+                <a class="nav-link" href="pesan-admin">
+                    <i class="fas fa-envelope"></i>
+                    <span>Pesan Masuk</span>
                 </a>
             </li>
 
@@ -185,40 +193,43 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Total Pengguna</h5>
                                         <p class="card-text display-6">{{ total_users }}</p>
-                                        <a href="{{ url_for('user') }}" class="btn btn-light btn-sm">Kelola Users</a>
+                                        <a href="{{ url_for('user') }}" class="btn btn-light btn-sm">Kelola Pengguna</a>
                                     </div>
                                 </div>
                             </div>
-                
+
                             <!-- Statistik Program -->
                             <div class="col-md-4">
                                 <div class="card text-bg-success">
                                     <div class="card-body">
                                         <h5 class="card-title">Total Program</h5>
                                         <p class="card-text display-6">{{ total_programs }}</p>
-                                        <a href="{{ url_for('program_admin') }}" class="btn btn-light btn-sm">Kelola Program</a>
+                                        <a href="{{ url_for('program_admin') }}" class="btn btn-light btn-sm">Kelola
+                                            Program</a>
                                     </div>
                                 </div>
                             </div>
-                
+
                             <!-- Kunjungan atau Statistik Tambahan -->
                             <div class="col-md-4">
                                 <div class="card text-bg-warning">
                                     <div class="card-body">
                                         <h5 class="card-title">Total Pendaftar</h5>
                                         <p class="card-text display-6">{{ total_pendaftar }}</p>
-                                        <a href="{{ url_for('form_admin') }}" class="btn btn-light btn-sm">Kelola Pendaftaran</a>
+                                        <a href="{{ url_for('form_admin') }}" class="btn btn-light btn-sm">Kelola
+                                            Pendaftaran</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                
+
                         <div class="row mt-5">
                             <!-- Navigasi Cepat -->
                             <div class="col-md-12 mb-3">
                                 <h3>Quick Actions</h3>
                                 <div class="list-group">
-                                    <a href="{{ url_for('program_admin') }}" class="list-group-item list-group-item-action">
+                                    <a href="{{ url_for('program_admin') }}"
+                                        class="list-group-item list-group-item-action">
                                         Kelola Program
                                     </a>
                                     <a href="{{ url_for('user') }}" class="list-group-item list-group-item-action">
@@ -229,49 +240,49 @@
                         </div>
                     </div>
                 </div>
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; BBC 2024</span>
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; BBC 2024</span>
+                        </div>
                     </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
+                </footer>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Page Wrapper -->
 
-    </div>
-    <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{ url_for('logout') }}">Logout</a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="{{ url_for('logout') }}">Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{ url_for('static', filename='vendor/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/bootstrap.bundle.min.js') }}"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="{{ url_for('static', filename='vendor/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='vendor/bootstrap.bundle.min.js') }}"></script>
 </body>
 
 </html>
