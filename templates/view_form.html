@@ -24,42 +24,51 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="/admin">
-            <i class="fas fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+          <i class="fas fa-tachometer-alt"></i>
+          <span>Dashboard</span>
         </a>
       </li>
 
       <!-- Nav Item - Users -->
       <li class="nav-item">
         <a class="nav-link" href="/user">
-            <i class="fas fa-users"></i>
-            <span>Users</span>
+          <i class="fas fa-users"></i>
+          <span>Pengguna</span>
         </a>
       </li>
 
       <!-- Nav Item - Program -->
       <li class="nav-item">
-          <a class="nav-link" href="/program-admin">
-              <i class="fas fa-graduation-cap"></i>
-              <span>Program</span>
-          </a>
+        <a class="nav-link" href="/program-admin">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Program</span>
+        </a>
       </li>
 
       <!-- Nav Item - Pendaftaran -->
       <li class="nav-item active">
-          <a class="nav-link" href="/form-admin">
-              <i class="fas fa-clipboard-list"></i>
-              <span>Pendaftaran</span>
-          </a>
+        <a class="nav-link" href="/form-admin">
+          <i class="fas fa-clipboard-list"></i>
+          <span>Pendaftaran</span>
+        </a>
       </li>
 
       <!-- Nav Item - Profil Pengajar -->
       <li class="nav-item">
-          <a class="nav-link" href="pengajar">
-              <i class="fas fa-user-tie"></i>
-              <span>Profil Pengajar</span>
-          </a>
+        <a class="nav-link" href="/pengajar">
+          <i class="fas fa-user-tie"></i>
+          <span>Profil Pengajar</span>
+        </a>
       </li>
+
+      <!-- Nav Item - Pesan Masuk -->
+      <li class="nav-item">
+        <a class="nav-link" href="/pesan-admin">
+          <i class="fas fa-envelope"></i>
+          <span>Pesan Masuk</span>
+        </a>
+      </li>
+
       <hr class="sidebar-divider d-none d-md-block" />
     </ul>
 
@@ -69,59 +78,57 @@
           <!-- Add top navigation content here -->
         </nav>
 
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
-                <h1 class="h3 mb-4 text-gray-800">Formulir Details</h1>
-                <div class="card shadow-sm">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="card-title mb-0">Formulir Pendaftaran</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-md-4 font-weight-bold">Nama Lengkap</div>
-                            <div class="col-md-8">{{ pendaftaran.complitename }}</div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-4 font-weight-bold">Alamat Lengkap</div>
-                            <div class="col-md-8">{{ pendaftaran.address }}</div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-4 font-weight-bold">Jenis Kelamin</div>
-                            <div class="col-md-8">{{ pendaftaran.gender }}</div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-4 font-weight-bold">Nama Orang Tua</div>
-                            <div class="col-md-8">{{ pendaftaran.parents }}</div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-4 font-weight-bold">Program Yang Dipilih</div>
-                            <div class="col-md-8">{{ pendaftaran.program }}</div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-4 font-weight-bold">Level Yang Dipilih</div>
-                            <div class="col-md-8">{{ pendaftaran.level }}</div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-4 font-weight-bold">Nomor Telepon</div>
-                            <div class="col-md-8">{{ pendaftaran.phone }}</div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-4 font-weight-bold">Bukti Pembayaran</div>
-                            <div class="col-md-8">
-                                <img src="{{ url_for('static', filename='uploads/' + pendaftaran.payment_proof) }}" 
-                                    alt="{{ pendaftaran.payment_proof }}" 
-                                    class="img-fluid" 
-                                    width="500px">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer text-right">
-                        <a href="{{ url_for('form_admin') }}" class="btn btn-secondary">Back to Pendaftaran</a>
-                    </div>
-                </div>
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <h1 class="h3 mb-4 text-gray-800">Detail Pendaftaran</h1>
+          <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+              <h5 class="card-title mb-0">Formulir Pendaftaran</h5>
             </div>
-        
+            <div class="card-body">
+              <div class="row mb-3">
+                <div class="col-md-4 font-weight-bold">Nama Lengkap</div>
+                <div class="col-md-8">{{ pendaftaran.complitename }}</div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-4 font-weight-bold">Alamat Lengkap</div>
+                <div class="col-md-8">{{ pendaftaran.address }}</div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-4 font-weight-bold">Jenis Kelamin</div>
+                <div class="col-md-8">{{ pendaftaran.gender }}</div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-4 font-weight-bold">Nama Orang Tua</div>
+                <div class="col-md-8">{{ pendaftaran.parents }}</div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-4 font-weight-bold">Program Yang Dipilih</div>
+                <div class="col-md-8">{{ pendaftaran.program }}</div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-4 font-weight-bold">Level Yang Dipilih</div>
+                <div class="col-md-8">{{ pendaftaran.level }}</div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-4 font-weight-bold">Nomor Telepon</div>
+                <div class="col-md-8">{{ pendaftaran.phone }}</div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-4 font-weight-bold">Bukti Pembayaran</div>
+                <div class="col-md-8">
+                  <img src="{{ url_for('static', filename='uploads/' + pendaftaran.payment_proof) }}"
+                    alt="{{ pendaftaran.payment_proof }}" class="img-fluid" width="500px">
+                </div>
+              </div>
+            </div>
+            <div class="card-footer text-right">
+              <a href="{{ url_for('form_admin') }}" class="btn btn-secondary">Kembali ke Tabel Pendaftaran</a>
+            </div>
+          </div>
         </div>
+
+      </div>
 
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
