@@ -83,11 +83,15 @@
             {% if session.get('logged_in') %}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Hello, {{ session.get('username') }}
+                    Welcome, {{ session.get('username') }}
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
-                </ul>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Logout
+                    </a>
+                  </div>
             </li>
           </ul>
           {% else %}
@@ -134,11 +138,11 @@
   <div class="text-center bg-danger mt-0">
     <div class="container py-5">
       <h1 class="text-white fw-bold display-6">BUILD BETTER COMMUNICATION</h1>
-      <h5 class="text-light mb-3">Kemendikbud NPSN 123456 | Akreditasi BAN PNF No. KP317200001122015</h5>
+      <h5 class="text-light fw-bold mb-3">KABUPATEN PATI, JAWA TENGAH</h5>
       <p class="text-white fs-5">
         BBC Build Better Communication adalah Lembaga Kursus dan Pelatihan (LKP) yang berada di bawah naungan Yayasan
         Pendidikan Pertiwi Global.
-        Berdiri pada tahun 1980, saat ini BBC memiliki cabang di berbagai kota. BBC menyelenggarakan program pelatihan
+        Berdiri pada tahun 1980, saat ini BBC memiliki cabang di berbagai kota, salah satunya di Kabupaten Pati, Jawa Tengah. BBC menyelenggarakan program pelatihan
         bahasa Inggris untuk semua
         kalangan, baik individu maupun institusi. Dengan pengalaman lebih dari 43 tahun dan motto <span
           class="fst-italic">"Make English Easy"</span>,
@@ -155,7 +159,7 @@
     <div class="row featurette">
       <div class="col-md-7">
         <h1 class="featurette-heading mb-4">
-          Kenapa Harus Memilih BBC?
+          Kenapa Harus Memilih BBC Pati?
         </h1>
         <div class="list-group custom-list-group">
           <span class="list-group-item">✔ Lembaga kursus pertama ter-Akreditasi (No.
@@ -278,6 +282,26 @@
       Inggris
     </p>
   </footer>
+
+  <!-- Logout Modals -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to logout?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
