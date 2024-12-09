@@ -228,12 +228,21 @@
                             <div class="col-md-12 mb-3">
                                 <h3>Quick Actions</h3>
                                 <div class="list-group">
-                                    <a href="{{ url_for('program_admin') }}"
+                                    <a href="{{ url_for('user') }}"
                                         class="list-group-item list-group-item-action">
+                                        Kelola Pengguna
+                                    </a>
+                                    <a href="{{ url_for('program_admin') }}" class="list-group-item list-group-item-action">
                                         Kelola Program
                                     </a>
-                                    <a href="{{ url_for('user') }}" class="list-group-item list-group-item-action">
-                                        Kelola Pengguna
+                                    <a href="{{ url_for('form_admin') }}" class="list-group-item list-group-item-action">
+                                        Kelola Pendaftaran
+                                    </a>
+                                    <a href="{{ url_for('pengajar') }}" class="list-group-item list-group-item-action">
+                                        Kelola Profil Pengajar
+                                    </a>
+                                    <a href="{{ url_for('pesan_admin') }}" class="list-group-item list-group-item-action">
+                                        Kelola Pesan Masuk
                                     </a>
                                 </div>
                             </div>
