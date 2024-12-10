@@ -2,7 +2,7 @@
 
 /* Navbar */
 .container {
-  width: 100%; 
+  width: 100%;
   max-width: 1200px;
 }
 
@@ -36,7 +36,7 @@
   margin-top: 0;
 }
 
-.nav-item.dropdown:hover>.nav-link {
+.nav-item.dropdown:hover > .nav-link {
   color: #d62c2c;
 }
 
@@ -125,7 +125,7 @@
   /* Animasi saat hover */
 }
 
-.custom-list-group .list-group-item+.list-group-item {
+.custom-list-group .list-group-item + .list-group-item {
   margin-top: 8px;
   /* Jarak antar item */
 }
@@ -168,7 +168,7 @@
   min-height: 100%;
 }
 
-.row>.col {
+.row > .col {
   margin-bottom: 1rem;
   /* Jarak antar card */
 }
@@ -195,6 +195,34 @@
   font-weight: bold;
   border-radius: 0.5rem 0.5rem 0 0;
   /* Round corners atas */
+}
+
+.card-footer {
+  background: linear-gradient(135deg, #c3d7fd, #e0ebff);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.note-title {
+  font-weight: bold;
+  color: red;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.note-content {
+  font-size: 1rem;
+  color: black;
+  margin-bottom: 0;
+}
+
+.card-footer p {
+  margin: 0;
+}
+
+.note-title::after {
+  content: ':';
+  font-weight: normal;
 }
 
 .card-body {
@@ -296,7 +324,7 @@ ul li {
 }
 
 .accordion-button::after {
-  font-family: 'Font Awesome 5 Free';
+  font-family: "Font Awesome 5 Free";
   font-weight: 900;
   margin-left: auto;
   transition: transform 0.3s ease;
@@ -442,15 +470,12 @@ h1 {
 }
 
 .gradient-background {
-  background: linear-gradient(to right,
-      /* Mengatur gradien horizontal */
-      rgb(16, 0, 0),
-      /* Warna pertama */
-      rgba(2, 1, 106, 1),
-      /* Warna kedua */
-      rgba(0, 4, 255, 1)
-      /* Warna ketiga */
-    );
+  background: linear-gradient(
+    to right,
+    /* Mengatur gradien horizontal */ rgb(16, 0, 0),
+    /* Warna pertama */ rgba(2, 1, 106, 1),
+    /* Warna kedua */ rgba(0, 4, 255, 1) /* Warna ketiga */
+  );
 }
 
 @media only screen and (max-width: 600px) {
@@ -475,8 +500,10 @@ h1 {
 .hero-section {
   position: relative;
   height: 400px;
-  background: linear-gradient(rgba(255, 255, 255, 0.8),
-      rgba(255, 255, 255, 0.5)),
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.5)
+    ),
     url("/static/img/profil_bbc.jpeg");
   background-size: cover;
   background-position: center;
@@ -657,8 +684,6 @@ img:hover {
   padding: 50px 0;
 }
 
-
-
 footer {
   background-color: #d62c2c;
 }
@@ -738,7 +763,10 @@ footer {
 .detail-section {
   position: relative;
   height: 350px;
-  background: linear-gradient(rgba(241, 48, 48, 0.884), rgba(247, 125, 125, 0.829)),
+  background: linear-gradient(
+      rgba(241, 48, 48, 0.884),
+      rgba(247, 125, 125, 0.829)
+    ),
     url("/static/img/program_bbc.jpg") no-repeat center;
   background-size: cover;
   display: flex;
