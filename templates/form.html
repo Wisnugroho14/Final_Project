@@ -19,12 +19,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <!-- Tambahkan SweetAlert2 -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
       integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
@@ -151,7 +145,7 @@
                   </li>
                   <li>
                     <a class="dropdown-item" href="/program/toefl"
-                      >TOEFL/TOEIC Preparation</a
+                      >TOEFL/TOIEC Preparation</a
                     >
                   </li>
                 </ul>
@@ -288,7 +282,7 @@
                 <option value="teens">English for Teens</option>
                 <option value="adults">English for Adults</option>
                 <option value="private">English Private Class</option>
-                <option value="toefl">TOEFL/TOEIC Preparation</option>
+                <option value="toefl">TOEFL/TOIEC Preparation</option>
               </select>
             </div>
             <div class="col-md-6">
@@ -596,6 +590,11 @@
             price: 650000,
           },
           {
+            text: "Preparation TOIEC / 6x90 Pertemuan ",
+            value: "prep_toiec",
+            price: 650000,
+          },
+          {
             text: "Preparation IELTS / 10x90 Pertemuan ",
             value: "prep_ielts",
             price: 1050000,
@@ -657,35 +656,6 @@
       }
       // END DESKRIPSI PROGRAM YANG DI PILIH
     </script>
-
-    <!-- SweetAlert2 -->
-    <!-- <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          // Ambil pesan dari flash Flask
-          const message = "{{ get_flashed_messages(category_filter=['success'])[0] if get_flashed_messages(category_filter=['success']) else '' }}";
-          const error = "{{ get_flashed_messages(category_filter=['danger'])[0] if get_flashed_messages(category_filter=['danger']) else '' }}";
-
-          // Jika ada pesan sukses
-          if (message) {
-              Swal.fire({
-                  icon: 'success',
-                  title: 'Berhasil!',
-                  text: message,
-                  confirmButtonText: 'OK'
-              });
-          }
-
-          // Jika ada pesan error
-          if (error) {
-              Swal.fire({
-                  icon: 'error',
-                  title: 'Kesalahan!',
-                  text: error,
-                  confirmButtonText: 'OK'
-              });
-          }
-      });
-  </script> -->
 
     <!-- Logout Modals -->
     <div

@@ -317,7 +317,7 @@ def program_detail(program_name):
     programs = {
         "children": {
             "title": "English for Children",
-            "description": "English for Children adalah program pelatihan Bahasa Inggris yang diperuntukkan bagi pelajar SD yang fokus pada penguasaan kosa kata, frasa serta ungkapan sederhana dalam komunikasi sehari-hari.",
+            "description": "English for Children adalah program pelatihan Bahasa Inggris yang diperuntukkan bagi pelajar mulai dari TK sampai SD yang fokus pada penguasaan kosa kata, frasa serta ungkapan sederhana dalam komunikasi sehari-hari.",
             "goals": [
                 "Menguasai kosa kata dan frasa serta ungkapan-ungkapan sederhana dalam komunikasi sehari-hari.",
                 "Membangun kebiasaan berbahasa Inggris.",
@@ -325,7 +325,7 @@ def program_detail(program_name):
                 "Menanamkan karakter unggul seperti disiplin, tanggungjawab, kepedulian, percaya diri, ketakwaan, dll",
             ],
             "levels": [
-                "Kindergarden 1","Kindergarden 2","Prepatory Class 1A","Prepatory Class 1B","Prepatory Class 2A","Prepatory Class 2B","Prepatory Class 3A","Prepatory Class 3B","Prepatory Class 4A","Prepatory Class 4B","Prepatory Class 5A","Prepatory Class 5B","Prepatory Class 6A","Prepatory Class 6B","Dynamic Conversation for Children"
+                "Kindergarten 1","Kindergarten 2","Prepatory Class 1A","Prepatory Class 1B","Prepatory Class 2A","Prepatory Class 2B","Prepatory Class 3A","Prepatory Class 3B","Prepatory Class 4A","Prepatory Class 4B","Prepatory Class 5A","Prepatory Class 5B","Prepatory Class 6A","Prepatory Class 6B","Dynamic Conversation for Children"
             ]
         },
 
@@ -372,16 +372,17 @@ def program_detail(program_name):
         },
 
         "toefl": {
-            "title": "TOEFL/TOEIC Preparation",
-            "description": "TOEFL/TOEIC Preparation adalah program pelatihan Bahasa Inggris untuk mempersiapkan peserta didik menghadapi tes standar nasional dan internasional seperti TOEFL/TOEIC.",
+            "title": "TOEFL/TOIEC Preparation",
+            "description": "TOEFL/TOIEC Preparation adalah program pelatihan Bahasa Inggris untuk mempersiapkan peserta didik menghadapi tes standar nasional dan internasional seperti TOEFL/TOIEC.",
             "goals": [
                 "Meningkatkan Keterampilan Berbahasa Inggris untuk mempersiapkan ujian.",
                 "Membantu peserta mencapai target skor TOEFL untuk keperluan akademik, beasiswa, atau pekerjaan.",
                 "Membiasakan peserta dengan struktur dan jenis soal dalam setiap bagian tes: Reading, Listening, Speaking, dan Writing."
             ],
             "levels": [
-                "Test TOEFL/TOEIC",
+                "Test TOEFL/TOIEC",
                 "Preparation TOEFL",
+                "Preparation TOIEC",
                 "Preparation IELTS",
             ]
         }
