@@ -348,7 +348,7 @@ def program_detail(program_name):
             "description": "English for Adults adalah program pelatihan Bahasa Inggris yang diperuntukkan bagi pelajar SMA/SMK sederajat dan dewasa seperti mahasiswa, karyawan, profesional, pelaku bisnis, ibu rumah tangga, dan lainnya.",
             "goals": [
                 "Meningkatkan keterampilan Listening, Speaking, Reading dan Writing.",
-                "Meningkatkan kepercayaan diri dalam menggunakan bahasa Inggris secara aktif dalam berbagai situasi..",
+                "Meningkatkan kepercayaan diri dalam menggunakan bahasa Inggris secara aktif dalam berbagai situasi.",
                 "Mengingkatkan penguasaan grammar untuk akurasi bahasa Inggris yang lebih baik."
             ],
             "levels": [
@@ -372,17 +372,17 @@ def program_detail(program_name):
         },
 
         "toefl": {
-            "title": "TOEFL/TOIEC Preparation",
-            "description": "TOEFL/TOIEC Preparation adalah program pelatihan Bahasa Inggris untuk mempersiapkan peserta didik menghadapi tes standar nasional dan internasional seperti TOEFL/TOIEC.",
+            "title": "TOEFL/TOEIC Preparation",
+            "description": "TOEFL/TOEIC Preparation adalah program pelatihan Bahasa Inggris untuk mempersiapkan peserta didik menghadapi tes standar nasional dan internasional seperti TOEFL/TOEIC.",
             "goals": [
                 "Meningkatkan Keterampilan Berbahasa Inggris untuk mempersiapkan ujian.",
-                "Membantu peserta mencapai target skor TOEFL untuk keperluan akademik, beasiswa, atau pekerjaan.",
+                "Membantu peserta mencapai target skor TOEFL/TOEIC untuk keperluan akademik, beasiswa, atau pekerjaan.",
                 "Membiasakan peserta dengan struktur dan jenis soal dalam setiap bagian tes: Reading, Listening, Speaking, dan Writing."
             ],
             "levels": [
-                "Test TOEFL/TOIEC",
+                "Test TOEFL/TOEIC",
                 "Preparation TOEFL",
-                "Preparation TOIEC",
+                "Preparation TOEIC",
                 "Preparation IELTS",
             ]
         }
