@@ -170,6 +170,11 @@
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Tabel Pendaftaran</h1>
 
+          <!-- Search Input -->
+          <div class="mb-3">
+            <input type="text" id="searchInput" class="form-control" placeholder="Cari data..." />
+          </div>
+
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -272,6 +277,19 @@
       </div>
     </div>
   </div>
+
+  <script>
+    document.getElementById("searchInput").addEventListener("keyup", function () {
+      const filter = this.value.toLowerCase();
+      const rows = document.querySelectorAll("#dataTable tbody tr");
+
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(filter) ? "" : "none";
+      });
+    });
+  </script>
+
   <!-- Bootstrap core JavaScript-->
   <script src="{{ url_for('static', filename='vendor/jquery.min.js') }}"></script>
   <script src="{{ url_for('static', filename='vendor/bootstrap.bundle.min.js') }}"></script>
