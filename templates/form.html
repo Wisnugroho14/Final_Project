@@ -68,6 +68,23 @@
         margin-top: 10px;
       }
 
+      /* Section Gambar Bank */
+      .container-bank {
+        background-color: white;
+        border-radius: 8px; /* Sama seperti form-wrapper */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sama seperti form-wrapper */
+        max-width: 800px; /* Sama seperti form-wrapper */
+        margin: auto; /* Pusatkan di tengah */
+        padding: 20px; /* Sama seperti form-wrapper */
+      }
+
+      /* Footer */
+      footer {
+        font-size: 1rem;
+        padding: 20px 0;
+        background-color: #d62c2c;
+      }
+
       /* RESPONSIVE: Gambar di bawah teks pada layar kecil */
       @media (max-width: 768px) {
         .form-wrapper {
@@ -84,6 +101,16 @@
         margin: 0;
         color: red;
         font-size: 18px;
+      }
+
+      /* Gambar Bank Section */
+      .container-bank {
+        padding: 10px; /* Kurangi padding pada bagian bank */
+      }
+
+      .card {
+        padding: 15px; /* Kurangi padding kartu */
+        margin: 10px auto; /* Kurangi margin kartu */
       }
 
       footer {
@@ -189,7 +216,7 @@
                     <i
                       class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
                     ></i>
-                    Logout
+                    Keluar
                   </a>
                 </div>
               </li>
@@ -346,7 +373,7 @@
           </div>
 
           <!-- Tombol -->
-           
+
           <div class="btn-container justify-content-end">
             <div class="justify-content-end">
               <button
@@ -367,37 +394,40 @@
             </div>
           </div>
           <p class="note-content">
-            <br>
-            *Biaya pendaftaran hanya berlaku bagi peserta yang baru pertama kali bergabung dengan BBC.
-         </p>
+            <br />
+            *Biaya pendaftaran hanya berlaku bagi peserta yang baru pertama kali
+            bergabung dengan BBC.
+          </p>
         </form>
       </div>
     </div>
     <!-- FORM END -->
-    
 
     <!-- PAYMENT -->
-      <div class="container-bank py-4">
-        <div class="row justify-content-center">
-          <div class="col-md-6 p-4 rounded shadow bg-white">
-            <div class="row text-center">
-              <!-- Card Bank BRI -->
-              <div class="card border-0 shadow-sm text-center">
-                <div class="card-body d-flex flex-column justify-content-center align-items-center" style="height: 200px;">
-                  <img
-                    src="{{ url_for('static', filename='icon/BRI.png') }}"
-                    alt="Bank BRI"
-                    class="img-fluid mb-4"
-                    style="max-width: 100px"
-                  />
-                  <h4 class="card-title m-0 mb-2">LKP BBC ETS PATI</h4>
-                  <p class="card-text m-0 fs-5">5951 0102 5618 539</p>
-                </div>
+    <div class="container-bank py-4 mb-3">
+      <div class="row justify-content-center">
+        <div class="col-md-6 p-4">
+          <div class="row text-center">
+            <!-- Card Bank BRI -->
+            <div>
+              <div
+                class="card-body d-flex flex-column justify-content-center align-items-center"
+                style="height: 200px"
+              >
+                <img
+                  src="{{ url_for('static', filename='icon/BRI.png') }}"
+                  alt="Bank BRI"
+                  class="img-fluid mb-4"
+                  style="max-width: auto"
+                />
+                <h4 class="card-title m-0 mb-2">LKP BBC ETS PATI</h4>
+                <p class="card-text m-0 fs-5">5951 0102 5618 539</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
     <!-- END PAYMENT -->
 
@@ -539,19 +569,21 @@
             price: 550000,
             total: 640000,
           },
-          { text: "Beginner 1 / 3 bulan ", 
+          {
+            text: "Beginner 1 / 3 bulan ",
             value: "beginner1",
-            book: 40000, 
-            join: 50000, 
+            book: 40000,
+            join: 50000,
             price: 460000,
-            total: 550000, 
+            total: 550000,
           },
-          { text: "Beginner 2 / 3 bulan ", 
+          {
+            text: "Beginner 2 / 3 bulan ",
             value: "beginner2",
-            book: 40000, 
-            join: 50000, 
+            book: 40000,
+            join: 50000,
             price: 480000,
-            total: 570000, 
+            total: 570000,
           },
           {
             text: "Dynamic Conversation for Teens 2 / 3 bulan ",
@@ -587,19 +619,21 @@
           },
         ],
         adults: [
-          { text: "Basic 1 / 3 bulan ", 
+          {
+            text: "Basic 1 / 3 bulan ",
             value: "basic1",
-            book: 40000, 
-            join: 50000, 
+            book: 40000,
+            join: 50000,
             price: 480000,
-            total: 570000, 
+            total: 570000,
           },
-          { text: "Basic 2 / 3 bulan ", 
+          {
+            text: "Basic 2 / 3 bulan ",
             value: "basic2",
-            book: 40000, 
-            join: 50000, 
+            book: 40000,
+            join: 50000,
             price: 480000,
-            total: 570000, 
+            total: 570000,
           },
           {
             text: "Dynamic Conversation for Adult 1 - 3 bulan ",
@@ -679,21 +713,23 @@
             book: 40000,
             join: 50000,
             price: 630000,
-            total: 720000, 
+            total: 720000,
           },
-          { text: "Advance 1 / 4 bulan ", 
-            value: "advance1", 
-            book: 40000, 
-            join: 50000, 
+          {
+            text: "Advance 1 / 4 bulan ",
+            value: "advance1",
+            book: 40000,
+            join: 50000,
             price: 650000,
             total: 740000,
           },
-          { text: "Advance 2 / 4 bulan ", 
-            value: "advance2", 
-            book: 40000, 
-            join: 50000, 
-            price: 650000, 
-            total: 740000, 
+          {
+            text: "Advance 2 / 4 bulan ",
+            value: "advance2",
+            book: 40000,
+            join: 50000,
+            price: 650000,
+            total: 740000,
           },
         ],
         private: [
@@ -792,36 +828,35 @@
         }
 
         // Tampilkan deskripsi
-        document.getElementById(
-          "selectedProgram"
-        ).textContent = `Program: ${
-          programSelect.options[programSelect.selectedIndex].text}`;
-          
+        document.getElementById("selectedProgram").textContent = `Program: ${
+          programSelect.options[programSelect.selectedIndex].text
+        }`;
+
         document.getElementById(
           "selectedLevel"
         ).textContent = `Level: ${selectedLevel.text}`;
-        
+
         document.getElementById(
           "selectedBook"
         ).textContent = `Buku: Rp. ${parseInt(
           selectedLevel.dataset.book
         ).toLocaleString("id-ID")}`;
         descriptionDiv.style.display = "block";
-        
+
         document.getElementById(
           "selectedJoin"
         ).textContent = `Pendaftaran: Rp. ${parseInt(
           selectedLevel.dataset.join
         ).toLocaleString("id-ID")}`;
         descriptionDiv.style.display = "block";
-        
+
         document.getElementById(
           "selectedPrice"
         ).textContent = `Biaya: Rp. ${parseInt(
           selectedLevel.dataset.price
         ).toLocaleString("id-ID")}`;
         descriptionDiv.style.display = "block";
-        
+
         document.getElementById(
           "selectedTotal"
         ).textContent = `Total Biaya: Rp. ${parseInt(
@@ -843,7 +878,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+            <h5 class="modal-title" id="logoutModalLabel">Konfirmasi Keluar</h5>
             <button
               type="button"
               class="btn-close"
@@ -851,7 +886,7 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">Are you sure you want to logout?</div>
+          <div class="modal-body">Apakah anda yakin ingin keluar?</div>
           <div class="modal-footer">
             <button
               type="button"
@@ -860,7 +895,7 @@
             >
               Cancel
             </button>
-            <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-danger">Keluar</a>
           </div>
         </div>
       </div>
