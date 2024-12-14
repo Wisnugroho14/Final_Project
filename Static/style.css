@@ -413,9 +413,9 @@ h1 {
 }
 
 .icon {
-  width: 50px;
+  width: 40px;
   /* Atur ukuran ikon jika perlu */
-  height: 50px;
+  height: 40px;
 }
 
 .iframe-container {
@@ -439,7 +439,7 @@ h1 {
 .contact-item a {
   color: white;
   /* Ubah warna teks menjadi putih */
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   /* Perbesar ukuran teks */
   font-weight: 500;
   /* Tambahkan ketebalan teks jika diperlukan */
