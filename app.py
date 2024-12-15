@@ -2,10 +2,22 @@ from flask import Flask, render_template, request, redirect, url_for, flash,json
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
+from os.path import join, dirname
+from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
 import bcrypt
 import os
 from werkzeug.utils import secure_filename
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+MONGODB_URI = os.environ.get("MONGODB_URI")
+DB_NAME =  os.environ.get("DB_NAME")
+
+client = MongoClient(MONGODB_URI)
+
+db = client[DB_NAME]
 
 # Inisialisasi Flask
 app = Flask(__name__)
@@ -19,8 +31,6 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
 
 # Koneksi ke MongoDB
-client = MongoClient("mongodb+srv://test:sparta@cluster0.kbfqt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-db = client['bimble_bbc']  # Replace with your MongoDB database name
 users_collection = db['users']
 programs_collection = db['programs']
 pendaftaran_collection = db['pendaftaran']
